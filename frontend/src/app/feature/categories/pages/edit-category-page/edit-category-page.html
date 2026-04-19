@@ -1,0 +1,31 @@
+@if (loading()) {
+  <div class="spinner-container">
+    <mat-spinner />
+  </div>
+} @else {
+  <div class="page-container">
+    <h2>Editar categoría</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" />
+        @if (form.controls.name.hasError('required')) {
+          <mat-error>El nombre es requerido</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Descripción</mat-label>
+        <input matInput formControlName="description" />
+        @if (form.controls.description.hasError('required')) {
+          <mat-error>La descripción es requerida</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="actions">
+        <button matButton type="button" (click)="onCancel()">Cancelar</button>
+        <button matButton="filled" type="submit" [disabled]="form.invalid || saving()">Guardar</button>
+      </div>
+    </form>
+  </div>
+}

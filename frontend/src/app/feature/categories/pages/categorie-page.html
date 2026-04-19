@@ -1,0 +1,10 @@
+<app-toolbar-categorie (onSearch)="handleSearch($event)" (addCategory)="handleAddCategory($event)" />
+<app-table-categorie
+  [categoriesData]="categories()"
+  [loading]="loadingData()"
+  [totalElements]="totalElements()"
+  [currentPage]="currentPage()"
+  [pageSize]="pageSize()"
+  (pageEvent)="handlePagination($event)"
+  (deleteCategory)="handleDeleteCategory($event)"
+/>

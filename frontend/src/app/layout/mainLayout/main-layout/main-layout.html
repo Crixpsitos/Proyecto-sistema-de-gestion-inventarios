@@ -1,0 +1,24 @@
+<mat-drawer-container style="height: 100%;">
+  <mat-drawer mode="over" [(opened)]="drawerOpened">
+    <nav class="flex flex-col w-64 h-full p-4 gap-1" aria-label="Navegación principal">
+      @for (route of routes; track route.path) {
+        <a
+          [routerLink]="route.path"
+          routerLinkActive="bg-gray-200 font-medium"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="drawerOpened.set(false)"
+          class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+          <mat-icon>{{ route.icon }}</mat-icon>
+          <span>{{ route.name }}</span>
+        </a>
+      }
+    </nav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-navbar [(drawerOpened)]="drawerOpened" />
+    <main class="p-6 w-full h-full">
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer />
+  </mat-drawer-content>
+</mat-drawer-container>

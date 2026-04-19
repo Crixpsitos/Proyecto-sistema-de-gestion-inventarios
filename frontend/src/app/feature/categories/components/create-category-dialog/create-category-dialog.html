@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Crear categoría</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="data.name" name="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <input matInput [(ngModel)]="data.description" name="description" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onNoClick()">Regresar</button>
+  <button matButton [mat-dialog-close]="data" cdkFocusInitial>Crear</button>
+</mat-dialog-actions>

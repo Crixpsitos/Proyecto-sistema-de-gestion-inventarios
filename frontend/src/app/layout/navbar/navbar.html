@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="toggleDrawer()" aria-label="Abrir menú">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Gestion de Inventarios</span>
+  <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+  @if (user(); as u) {
+    <span>{{ u.name }} {{ u.lastName }}</span>
+  }
+</mat-toolbar>

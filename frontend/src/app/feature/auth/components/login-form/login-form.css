@@ -1,0 +1,16 @@
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.submit-btn {
+  margin-top: 8px;
+}
+
+mat-card-header {
+  margin-bottom: 8px;
+}
