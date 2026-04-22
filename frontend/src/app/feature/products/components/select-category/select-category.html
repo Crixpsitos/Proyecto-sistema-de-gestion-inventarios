@@ -1,0 +1,43 @@
+<mat-form-field appearance="outline" class="w-full">
+  <mat-label>Categoria</mat-label>
+
+  <mat-select [formControl]="categoryControl()" placeholder="Selecciona una categoría">
+
+    @for (category of categories(); track category.id) {
+      <mat-option [value]="category.id">
+        {{ category.name }}
+      </mat-option>
+    }
+
+    @if (isLoading()) {
+      <mat-option disabled class="flex items-center justify-center">
+        <mat-spinner diameter="20" class="mr-2"></mat-spinner>
+        <span>Loading categories...</span>
+      </mat-option>
+    }
+
+    @if (hasMorePages() && !isLoading()) {
+      <mat-option
+        (click)="loadCategories($event)"
+        class="text-indigo-600 font-semibold bg-indigo-50 hover:bg-indigo-100 flex justify-center border-t border-indigo-100">
+        <div class="w-full text-center">
+          + Cargar más categorías
+        </div>
+      </mat-option>
+    }
+
+    @if (!hasMorePages() && categories().length > 0) {
+      <mat-option disabled class="text-center text-gray-400 text-xs italic">
+        Todas las categorías cargadas
+      </mat-option>
+    }
+
+  </mat-select>
+
+  @if (categoryControl().hasError('required') && categoryControl().touched) {
+      <mat-error>Requerido</mat-error>
+  }
+  @if (categoryControl().hasError('min') && categoryControl().touched) {
+      <mat-error>Categoría mínima 0</mat-error>
+  }
+</mat-form-field>

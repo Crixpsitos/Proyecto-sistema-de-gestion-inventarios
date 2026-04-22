@@ -1,0 +1,35 @@
+.inventory-container {
+  padding: 24px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-actions h2 {
+  margin: 0;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+app-product-table {
+  display: block;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.paginator-container {
+  display: flex;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 20px auto 0;
+}

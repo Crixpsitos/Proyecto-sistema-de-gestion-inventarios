@@ -1,0 +1,8 @@
+<mat-paginator
+  #paginator
+  [pageSizeOptions]="pageSizeOptions"
+  [pageSize]="pageSize()"
+  [pageIndex]="currentPage()"
+  [length]="totalElements()"
+  (page)="handlePageEvent($event)"
+/>

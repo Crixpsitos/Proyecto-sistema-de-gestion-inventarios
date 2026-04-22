@@ -19,6 +19,7 @@ export class MainLayout {
   protected routes = [
     { path: '', name: 'Inventarios', icon: 'inventory_2' },
     { path: 'categorias', name: 'Categorías', icon: 'category' },
+    { path: 'productos', name: 'Productos', icon: 'product' },
   ];
 
 }

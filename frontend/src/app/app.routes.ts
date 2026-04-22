@@ -7,6 +7,8 @@ import { authGuard } from './core/guards/auth/auth-guard';
 import { publicGuard } from './core/guards/public/public-guard';
 import { CategoriePage } from './feature/categories/pages/categorie-page';
 import { EditCategoryPage } from './feature/categories/pages/edit-category-page/edit-category-page';
+import { ProductPage } from './feature/products/pages/product-page/product-page';
+import { AddProduct } from './feature/products/pages/add-product/add-product';
 
 export const routes: Routes = [
   {
@@ -31,6 +33,14 @@ export const routes: Routes = [
       {
         path: 'categorias/:id/editar',
         component: EditCategoryPage
+      },
+      {
+        path: 'productos',
+        component: ProductPage
+      },
+      {
+        path: 'añadir-producto',
+        component: AddProduct
       }
     ]
   }
