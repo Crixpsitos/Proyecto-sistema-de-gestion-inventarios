@@ -1,3 +1,22 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.toolbar-shell {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.9rem 1rem 0.35rem;
+}
+
+.search-field {
+  flex: 1 1 320px;
+  min-width: 240px;
+}
+
+@media (max-width: 720px) {
+  .toolbar-shell {
+    padding: 0.85rem 0.75rem 0.3rem;
+  }
+}

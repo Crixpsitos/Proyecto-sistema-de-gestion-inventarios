@@ -7,6 +7,9 @@ import { validatorImage } from '../../validators/ValidatorImage';
 import { MatIconModule } from '@angular/material/icon';
 import { SelectCategory } from '../select-category/select-category';
 import { Category } from '../../../../core/models/category/Category';
+import { skuAsyncValidator } from '../../validators/product-validators';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-form-product',
@@ -17,13 +20,14 @@ import { Category } from '../../../../core/models/category/Category';
 export class AddFormProduct {
 
   private fb = inject(FormBuilder);
+  private http = inject(HttpClient);
+  private router = inject(Router);
 
   public submitEvent = output<Partial<{
     sku: string | null;
     name: string | null;
     description: string | null;
     price: number | null;
-    stock: number | null;
     image: null | File;
     brand: string | null;
     model: string | null;
@@ -36,13 +40,12 @@ export class AddFormProduct {
 
 
 public form = this.fb.group({
-    sku: ['', [Validators.required]],
+    sku: ['', [Validators.required], skuAsyncValidator(this.http)],
     name: ['', [Validators.required]],
     description: [''],
     price: [0, [Validators.required, Validators.min(0)]],
-    stock: [0, [Validators.required, Validators.min(0)]],
 
-    image: [null as File | null, [Validators.required, validatorImage]],
+    image: [null as File | null, [validatorImage]],
 
     brand: ['', [Validators.required]],
     model: ['', [Validators.required]],
@@ -75,5 +78,9 @@ public form = this.fb.group({
     this.submitEvent.emit(this.form.value);
   }
 
+
+  public navigateBack() {
+    this.router.navigate(['/productos']);
+  }
 
 }

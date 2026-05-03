@@ -1,20 +1,39 @@
-<div class="inventory-container">
-    <div class="header-actions">
-        <h2>Gestión de Inventario</h2>
+<section class="page-shell">
+    <header class="page-hero">
+        <div>
+            <p class="eyebrow">Catalogo</p>
+            <h1>Productos</h1>
+            <p class="subtitle">Gestiona el catalogo de productos y su relacion con categorias.</p>
+        </div>
+        @if (canManageProducts()) {
         <button (click)="navigateToAddProduct()" mat-flat-button color="primary">
-            <mat-icon>add</mat-icon> Nuevo Producto
+            <mat-icon>add</mat-icon>
+            Nuevo Producto
         </button>
-    </div>
+        }
+    </header>
 
-    <app-product-toolbar (search)="handleSearch($event)"></app-product-toolbar>
+    <section class="stats-grid">
+        <article class="stat-card">
+            <p class="stat-label">Resultados totales</p>
+            <p class="stat-value">{{ totalElements() }}</p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Registros en pagina</p>
+            <p class="stat-value">{{ products().length }}</p>
+        </article>
+    </section>
 
-    <app-product-table [products]="products()" />
-
-    <div class="paginator-container">
-        <app-paginator
-            [pageSize]="pageSize()"
-            [currentPage]="currentPage()"
-            [totalElements]="totalElements()"
-            (pageEvent)="handlePagination($event)" />
-    </div>
-</div>
+    <section class="content-panel">
+        <app-product-toolbar (search)="handleSearch($event)" (categorySelect)="handleCategoryChange($event)" />
+        <app-product-table [products]="products()" [canManage]="canManageProducts()" (registerMovement)="handleQuickMovement($event)" />
+        <div class="paginator-container">
+            <app-paginator
+                [pageSize]="pageSize()"
+                [currentPage]="currentPage()"
+                [totalElements]="totalElements()"
+                (pageEvent)="handlePagination($event)"
+            />
+        </div>
+    </section>
+</section>

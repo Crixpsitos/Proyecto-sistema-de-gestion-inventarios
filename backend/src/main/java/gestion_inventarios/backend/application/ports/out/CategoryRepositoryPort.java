@@ -11,6 +11,7 @@ public interface CategoryRepositoryPort {
     Category findById(Long id);
     Category save(Category category);
     void deleteById(Long id);
+    boolean hasProducts(Long categoryId);
     PageResult<Category> search(PageRequest pageRequest, String search);
     Optional<Category> findByName(String name);
 }

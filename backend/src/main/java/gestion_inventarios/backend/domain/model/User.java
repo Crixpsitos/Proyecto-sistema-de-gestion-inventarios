@@ -1,6 +1,7 @@
 package gestion_inventarios.backend.domain.model;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import lombok.Getter;
@@ -53,6 +54,35 @@ public class User {
         this.role = role;
         this.extraPermissions = Set.of();
         this.deniedPermissions = Set.of();
+    }
+
+    public void updateProfile(String name, String lastName, String email, String phone, DocumentIdentity documentIdentity) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.documentIdentity = documentIdentity;
+    }
+
+    public void updateRole(Role role) {
+        this.role = role;
+    }
+
+    public void updatePermissions(Set<Permission> extraPermissions, Set<Permission> deniedPermissions) {
+        this.extraPermissions = extraPermissions == null ? Set.of() : new HashSet<>(extraPermissions);
+        this.deniedPermissions = deniedPermissions == null ? Set.of() : new HashSet<>(deniedPermissions);
+    }
+
+    public void activate() {
+        this.enabled = true;
+    }
+
+    public void deactivate() {
+        this.enabled = false;
+    }
+
+    public void updatePassword(String passwordHash) {
+        this.password = passwordHash;
     }
 }
 

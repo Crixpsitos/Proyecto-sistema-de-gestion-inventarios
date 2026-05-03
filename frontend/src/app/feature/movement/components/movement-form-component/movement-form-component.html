@@ -1,0 +1,123 @@
+<h2 mat-dialog-title class="text-lg font-semibold text-gray-800">
+  Nuevo Movimiento
+</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" class="flex flex-col gap-4 pt-2 min-w-[450px]">
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Tipo de movimiento</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="IN">
+          <mat-icon>arrow_downward</mat-icon> Entrada
+        </mat-option>
+        <mat-option value="OUT">
+          <mat-icon>arrow_upward</mat-icon> Salida
+        </mat-option>
+        <mat-option value="TRANSFER">
+          <mat-icon>swap_horiz</mat-icon> Transferencia
+        </mat-option>
+      </mat-select>
+      @if (form.get('type')?.hasError('required') && form.get('type')?.touched) {
+        <mat-error>El tipo es obligatorio</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="flex flex-col gap-1">
+      <app-dropdown-infinite-scroll
+        class="w-full"
+        placeholder="Producto"
+        [fetchFn]="fetchProducts"
+        [mapper]="productMapper"
+        [formControl]="productControl"
+      />
+      @if (productControl.hasError('required') && productControl.touched) {
+        <span class="text-xs text-red-500 pl-4">
+          El producto es obligatorio
+        </span>
+      }
+    </div>
+
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Cantidad</mat-label>
+      <input matInput type="number" formControlName="quantity" min="1" />
+      @if (form.get('quantity')?.hasError('required') && form.get('quantity')?.touched) {
+        <mat-error>La cantidad es obligatoria</mat-error>
+      }
+      @if (form.get('quantity')?.hasError('min') && form.get('quantity')?.touched) {
+        <mat-error>La cantidad debe ser mayor a 0</mat-error>
+      }
+    </mat-form-field>
+
+    @if (showSource()) {
+      <div class="flex flex-col gap-1">
+        <app-dropdown-infinite-scroll
+          class="w-full"
+          placeholder="Bodega origen"
+          [fetchFn]="fetchLocations"
+          [mapper]="locationMapper"
+          [formControl]="sourceControl"
+        />
+        @if (sourceControl.hasError('required') && sourceControl.touched) {
+          <span class="text-xs text-red-500 pl-4">
+            La bodega origen es obligatoria
+          </span>
+        }
+      </div>
+    }
+
+
+    @if (showDestination()) {
+      <div class="flex flex-col gap-1">
+        <app-dropdown-infinite-scroll
+          class="w-full"
+          placeholder="Bodega destino"
+          [fetchFn]="fetchLocations"
+          [mapper]="locationMapper"
+          [formControl]="destinationControl"
+        />
+        @if (destinationControl.hasError('required') && destinationControl.touched) {
+          <span class="text-xs text-red-500 pl-4">
+            La bodega destino es obligatoria
+          </span>
+        }
+      </div>
+    }
+
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Notas</mat-label>
+      <textarea matInput formControlName="notes" rows="3"></textarea>
+      @if (form.get('notes')?.hasError('required') && form.get('notes')?.touched) {
+        <mat-error>Las notas son obligatorias</mat-error>
+      }
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="gap-2 px-4 pb-4">
+  <button
+    mat-button
+    (click)="onCancel()"
+    [disabled]="isLoading()"
+    class="text-gray-600"
+  >
+    Cancelar
+  </button>
+
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="isLoading()"
+    class="min-w-[140px]"
+  >
+    @if (isLoading()) {
+      <mat-spinner diameter="20" class="mx-auto" />
+    } @else {
+      Crear movimiento
+    }
+  </button>
+</mat-dialog-actions>

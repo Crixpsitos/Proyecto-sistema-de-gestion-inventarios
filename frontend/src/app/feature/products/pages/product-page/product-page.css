@@ -1,35 +1,92 @@
-.inventory-container {
-  padding: 24px;
-  background-color: #f8f9fa;
-  min-height: 100vh;
+.page-shell {
+  min-height: calc(100vh - 120px);
+  padding: 1.25rem;
+  background: #f5f7fb;
 }
 
-.header-actions {
+.page-hero {
+  background: #fff;
+  border: 1px solid #dce3ef;
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 14px 30px rgba(16, 44, 80, 0.08);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: space-between;
+  gap: 0.8rem;
 }
 
-.header-actions h2 {
+.eyebrow {
   margin: 0;
-  color: #333;
-  font-weight: 500;
-  font-size: 1.5rem;
+  color: #5f6b7d;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-app-product-table {
-  display: block;
-  max-width: 1400px;
-  margin: 0 auto;
+.page-hero h1 {
+  margin: 0.25rem 0;
+  color: #172033;
+  font-size: 1.55rem;
+}
+
+.subtitle {
+  margin: 0;
+  color: #5f6b7d;
+}
+
+.stats-grid {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.85rem;
+}
+
+.stat-card {
+  background: #fff;
+  border: 1px solid #dce3ef;
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 14px 30px rgba(16, 44, 80, 0.08);
+}
+
+.stat-label {
+  margin: 0;
+  color: #5f6b7d;
+  font-size: 0.8rem;
+}
+
+.stat-value {
+  margin: 0.2rem 0 0;
+  color: #1f4a8a;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.stat-small {
+  font-size: 1.05rem;
+}
+
+.content-panel {
+  margin-top: 0.9rem;
+  background: #fff;
+  border: 1px solid #dce3ef;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(16, 44, 80, 0.08);
 }
 
 .paginator-container {
-  display: flex;
-  justify-content: center;
-  max-width: 1400px;
-  margin: 20px auto 0;
+  padding: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

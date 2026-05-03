@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, model, output, signal } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { MatFormField, MatFormFieldModule } from "@angular/material/form-field";
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
@@ -12,7 +11,7 @@ import { CreateCategoryDialog } from '../create-category-dialog/create-category-
 
 @Component({
   selector: 'app-toolbar-categorie',
-  imports: [MatToolbarModule, MatFormField, MatFormFieldModule, MatIconModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+  imports: [MatFormField, MatFormFieldModule, MatIconModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
   templateUrl: './toolbar-categorie.html',
   styleUrl: './toolbar-categorie.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,6 +19,7 @@ import { CreateCategoryDialog } from '../create-category-dialog/create-category-
 export class ToolbarCategorie {
 
   readonly search = new FormControl('');
+  readonly canManage = input(false);
   readonly onSearch = output<string>();
   readonly addCategory = output<{name: string, description: string}>();
 

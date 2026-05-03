@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { Product } from '../../../../core/models/Product/Product'; // Ajusta la ruta
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-table',
@@ -16,7 +16,6 @@ import { Product } from '../../../../core/models/Product/Product'; // Ajusta la 
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    MatChipsModule,
     MatTooltipModule,
   ],
   templateUrl: './product-table.html',
@@ -24,7 +23,12 @@ import { Product } from '../../../../core/models/Product/Product'; // Ajusta la 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductTableComponent {
+
+  private router = inject(Router);
+
   public products = input.required<Product[]>();
+  public canManage = input(false);
+  public registerMovement = output<Product>();
 
   public displayedColumns: string[] = [
     'image',
@@ -32,7 +36,6 @@ export class ProductTableComponent {
     'name',
     'brand',
     'category',
-    'stock',
     'price',
     'actions',
   ];
@@ -40,5 +43,13 @@ export class ProductTableComponent {
 
   public handleImageError(event: Event): void {
     (event.target as HTMLImageElement).src = this.defaultImage;
+  }
+
+  public navigateToEditProduct(id: string): void {
+    this.router.navigate(['/productos', id, 'editar']);
+  }
+
+  public handleQuickMovement(product: Product): void {
+    this.registerMovement.emit(product);
   }
 }

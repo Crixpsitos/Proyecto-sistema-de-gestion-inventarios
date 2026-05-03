@@ -53,7 +53,7 @@ public class UserEntity {
     private DocumentIdentityEmbeddable documentIdentity;
 
     @Column(nullable = false)
-    private final boolean enabled = true;
+    private boolean enabled = true;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", nullable = false)
@@ -80,6 +80,28 @@ public class UserEntity {
         this.phone = phone;
         this.documentIdentity = documentIdentity;
         this.role = role;
+        this.enabled = true;
+    }
+
+    public void syncState(String name, String lastName, String email, String password,
+                          String phone, DocumentIdentityEmbeddable documentIdentity,
+                          boolean enabled, RoleEntity role) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.documentIdentity = documentIdentity;
+        this.enabled = enabled;
+        this.role = role;
+    }
+
+    public void activate() {
+        this.enabled = true;
+    }
+
+    public void deactivate() {
+        this.enabled = false;
     }
 }
 

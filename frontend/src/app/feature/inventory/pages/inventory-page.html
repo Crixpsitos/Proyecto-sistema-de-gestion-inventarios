@@ -1,1 +1,89 @@
-<p>home-page works!</p>
+<section class="inventory-shell">
+	<header class="inventory-hero">
+		<div>
+			<p class="eyebrow">Panel Operativo</p>
+			<h1>Inventario General</h1>
+			<p class="subtitle">Visualiza existencias por producto y ubicación en tiempo real.</p>
+		</div>
+	</header>
+
+	<section class="kpi-grid">
+		<article class="kpi-card">
+			<p class="kpi-label">Registros en página</p>
+			<p class="kpi-value">{{ items().length }}</p>
+		</article>
+		<article class="kpi-card">
+			<p class="kpi-label">Unidades visibles</p>
+			<p class="kpi-value">{{ totalQuantity() }}</p>
+		</article>
+		<article class="kpi-card">
+			<p class="kpi-label">Ubicaciones únicas</p>
+			<p class="kpi-value">{{ uniqueLocations() }}</p>
+		</article>
+	</section>
+
+	<section class="inventory-panel">
+		<div class="toolbar-row">
+			<label class="search-box">
+				<mat-icon>search</mat-icon>
+				<input
+					type="text"
+					placeholder="Buscar por producto, SKU o ubicación"
+					[value]="searchTerm()"
+					(input)="onSearch($any($event.target).value)"
+				/>
+			</label>
+			<span class="page-meta">Total general: {{ totalElements() }}</span>
+		</div>
+
+		@if (!loading()) {
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Producto</th>
+						<th>SKU</th>
+						<th>Ubicación</th>
+						<th>Código</th>
+						<th class="text-right">Cantidad</th>
+						<th>Actualizado</th>
+					</tr>
+				</thead>
+				<tbody>
+					@for (item of items(); track trackByInventoryId($index, item)) {
+					<tr>
+						<td>
+							<div class="product-cell">
+								<span class="dot"></span>
+								<span>{{ item.productName }}</span>
+							</div>
+						</td>
+						<td>{{ item.productSku }}</td>
+						<td>{{ item.locationName }}</td>
+						<td>{{ item.locationCode }}</td>
+						<td class="text-right qty">{{ item.quantity }}</td>
+						<td>{{ formatDate(item.updatedAt) }}</td>
+					</tr>
+					}
+				</tbody>
+			</table>
+
+			@if (items().length === 0) {
+			<div class="empty-state">
+				<mat-icon>info</mat-icon>
+				No hay registros para esta consulta.
+			</div>
+			}
+		</div>
+		} @else {
+		<div class="loading-state">Cargando inventario...</div>
+		}
+
+		<app-paginator
+			[totalElements]="totalElements()"
+			[currentPage]="page()"
+			[pageSize]="size()"
+			(pageEvent)="onPageChange($event)"
+		/>
+	</section>
+</section>

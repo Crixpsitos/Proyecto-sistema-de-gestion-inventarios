@@ -143,3 +143,15 @@ ON CONFLICT DO NOTHING;
 
 
 CREATE INDEX idx_categories_search ON categories USING gin ((name || ' ' || description) gin_trgm_ops);
+
+CREATE INDEX idx_locations_name_trgm    ON locations USING GIN (name    gin_trgm_ops);
+CREATE INDEX idx_locations_address_trgm ON locations USING GIN (address gin_trgm_ops);
+CREATE INDEX idx_locations_code_trgm    ON locations USING GIN (code    gin_trgm_ops);
+
+INSERT INTO locations (name, code, type, address, active, created_at, updated_at) VALUES
+('Bodega Central',     'BOD-001', 'WAREHOUSE', 'Calle 10 # 5-23, Ibagué',        true, NOW(), NOW()),
+('Bodega Norte',       'BOD-002', 'WAREHOUSE', 'Carrera 5 # 20-11, Ibagué',      true, NOW(), NOW()),
+('Tienda Centro',      'TDA-001', 'STORE',     'Carrera 3 # 11-45, Ibagué',      true, NOW(), NOW()),
+('Tienda Sur',         'TDA-002', 'STORE',     'Calle 60 # 4-12, Ibagué',        true, NOW(), NOW()),
+('Bodega Inactiva',    'BOD-003', 'WAREHOUSE', 'Avenida Ambala # 3-90, Ibagué',  false, NOW(), NOW()),
+('Virtual Devolución', 'VRT-001', 'VIRTUAL',   'N/A',                            true, NOW(), NOW());

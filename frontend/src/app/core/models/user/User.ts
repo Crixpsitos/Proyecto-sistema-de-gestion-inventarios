@@ -1,17 +1,10 @@
-import { Permissions } from "../permissions/Permissions";
-import { Role } from "../role/Role";
-import { DocumentIdentity } from "./DocumentIndentity";
-
 export interface User {
+  id: number;
   email: string;
   name: string;
   lastName: string;
-  phone: string;
-  role: Role;
-  extraPermissions: Permissions[];
-  deniedPermissions: Permissions[];
-  enabled: boolean;
-  documentIdentity: DocumentIdentity;
-  createdAt: Date;
-  updatedAt: Date;
+  phone: string | null;
+  role: string;
+  permissions: string[];
+  createdAt: string;
 }

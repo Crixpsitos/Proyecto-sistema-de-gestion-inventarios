@@ -1,0 +1,63 @@
+<section class="page-shell">
+  <header class="page-hero">
+    <div class="hero-head">
+      <div>
+        <p class="eyebrow">Trazabilidad</p>
+        <h1>Movimientos de Inventario</h1>
+        <p class="subtitle">Consulta entradas, salidas y transferencias con su historial.</p>
+      </div>
+
+      <div class="actions-row">
+        <button
+          mat-flat-button
+          (click)="resetFilters()"
+        >
+          <mat-icon>refresh</mat-icon>
+          Restablecer filtros
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="openCreateDialog()"
+        >
+          <mat-icon>add</mat-icon>
+          Nuevo movimiento
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+  <section class="stats-grid">
+    <article class="stat-card">
+      <p class="stat-label">Resultados totales</p>
+      <p class="stat-value">{{ totalElements() }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">Registros en pagina</p>
+      <p class="stat-value">{{ movements().length }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">Pagina actual</p>
+      <p class="stat-value">{{ currentPage() + 1 }}</p>
+    </article>
+  </section>
+
+  <section class="content-panel">
+    <app-movement-toolbar [currentFilters]="currentFilters()" (filtersChanged)="changeMovementFilters($event)" />
+
+    <div class="table-wrap">
+      <app-movement-table [movements]="movements()" />
+    </div>
+
+    <div class="paginator-wrap">
+      <app-paginator
+        [totalElements]="totalElements()"
+        [currentPage]="currentPage()"
+        [pageSize]="pageSize()"
+        (pageEvent)="handlePagination($event)"
+      />
+    </div>
+  </section>
+</section>

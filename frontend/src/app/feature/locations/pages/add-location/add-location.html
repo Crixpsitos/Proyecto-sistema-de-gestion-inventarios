@@ -1,0 +1,100 @@
+<div class="max-w-4xl mx-auto p-6">
+    <div class="flex items-center gap-4 mb-8">
+        <button (click)="goBack()" mat-icon-button type="button" class="cursor-pointer bg-white shadow-sm border border-gray-100">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div>
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight m-0">Añadir Ubicación</h1>
+            <p class="text-gray-500 text-sm">Completa el formulario para registrar una nueva locación en el sistema.</p>
+        </div>
+    </div>
+
+    <mat-card class="rounded-2xl border border-gray-200 shadow-sm">
+        <mat-card-content class="p-8">
+            <form id="createdForm" [formRoot]="locationForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Nombre -->
+                <div class="flex flex-col">
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>Nombre de la ubicación</mat-label>
+                        <mat-icon matPrefix class="text-gray-400 mr-2">business</mat-icon>
+                        <input [formField]="locationForm.name" matInput placeholder="Ej. Almacén Central">
+                    </mat-form-field>
+                    @if (locationForm.name().touched() && locationForm.name().invalid()) {
+                        @for (error of locationForm.name().errors(); track error.kind) {
+                            <mat-error class="text-xs mt-1 ml-4">{{ error.message }}</mat-error>
+                        }
+                    }
+                </div>
+
+                <!-- Código -->
+                <div class="flex flex-col">
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>Código identificador</mat-label>
+                        <mat-icon matPrefix class="text-gray-400 mr-2">qr_code</mat-icon>
+                        <input [formField]="locationForm.code" matInput placeholder="Ej. LOC-001">
+                    </mat-form-field>
+                    @if (locationForm.code().touched() && locationForm.code().invalid()) {
+                        @for (error of locationForm.code().errors(); track error.kind) {
+                            <mat-error class="text-xs mt-1 ml-4">{{ error.message }}</mat-error>
+                        }
+                    }
+                </div>
+
+                <!-- Tipo -->
+                <div class="flex flex-col">
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>Tipo de locación</mat-label>
+                        <mat-icon matPrefix class="text-gray-400 mr-2">category</mat-icon>
+                        <mat-select [formField]="locationForm.type">
+                            <mat-option value="WAREHOUSE">Bodega</mat-option>
+                            <mat-option value="STORE">Tienda</mat-option>
+                            <mat-option value="VIRTUAL">Virtual</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    @if (locationForm.type().touched() && locationForm.type().invalid()) {
+                        @for (error of locationForm.type().errors(); track error.kind) {
+                            <mat-error class="text-xs mt-1 ml-4">{{ error.message }}</mat-error>
+                        }
+                    }
+                </div>
+
+                <!-- Activo -->
+                <div class="flex items-center px-2">
+                    <mat-checkbox color="primary" [formField]="locationForm.active">
+                        <span class="text-gray-700 font-medium">Ubicación activa</span>
+                    </mat-checkbox>
+                </div>
+
+                <!-- Dirección -->
+                <div class="flex flex-col md:col-span-2">
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>Dirección física / Descripción</mat-label>
+                        <mat-icon matPrefix class="text-gray-400 mr-2">place</mat-icon>
+                        <input matInput placeholder="Ej. Av. Principal 123, Ciudad" [formField]="locationForm.address">
+                    </mat-form-field>
+                    @if (locationForm.address().touched() && locationForm.address().invalid()) {
+                        @for (error of locationForm.address().errors(); track error.kind) {
+                            <mat-error class="text-xs mt-1 ml-4">{{ error.message }}</mat-error>
+                        }
+                    }
+                </div>
+
+            </form>
+        </mat-card-content>
+
+        <mat-divider></mat-divider>
+
+        <div class="bg-gray-50 p-6 flex justify-end gap-3">
+            <button (click)="goBack()" mat-stroked-button type="button" class="cursor-pointer rounded-xl px-6 h-12">
+                Cancelar
+            </button>
+            <button
+                [disabled]="locationForm().invalid() || locationForm().pending()"
+                type="submit" form="createdForm"
+                class="flex items-center gap-2 rounded-xl px-8 h-12 shadow-md font-medium transition-all duration-200 bg-blue-600 text-white hover:bg-blue-700 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed disabled:shadow-none">
+                <mat-icon>save</mat-icon> Guardar Ubicación
+            </button>
+        </div>
+    </mat-card>
+</div>

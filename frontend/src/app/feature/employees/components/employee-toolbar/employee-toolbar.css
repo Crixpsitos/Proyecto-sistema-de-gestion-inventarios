@@ -1,0 +1,12 @@
+.toolbar-shell {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 1rem 0.35rem;
+}
+
+.search-field {
+  flex: 1 1 320px;
+  min-width: 260px;
+}

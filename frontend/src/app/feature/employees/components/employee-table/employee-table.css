@@ -1,0 +1,26 @@
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.employee-table {
+  width: 100%;
+  min-width: 780px;
+}
+
+.badge {
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-on {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-off {
+  background: #ffebee;
+  color: #c62828;
+}

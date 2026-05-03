@@ -1,0 +1,48 @@
+.location-grid {
+	padding: 0.25rem 1rem 1rem;
+}
+
+.location-card {
+	border-radius: 0.95rem;
+	background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.location-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 12px 24px -18px rgba(15, 23, 42, 0.45);
+}
+
+.location-inactive {
+	background: #f8fafc;
+}
+
+.metric-card {
+	border: 1px solid #e2e8f0;
+	border-radius: 0.75rem;
+	padding: 0.6rem 0.7rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	background: #ffffff;
+}
+
+.metric-label {
+	font-size: 0.65rem;
+	text-transform: uppercase;
+	letter-spacing: 0.045em;
+	font-weight: 700;
+	color: #64748b;
+}
+
+.metric-value {
+	font-size: 1.1rem;
+	line-height: 1.2;
+	font-weight: 700;
+	color: #0f172a;
+}
+
+@media (max-width: 640px) {
+	.location-grid {
+		padding: 0.25rem 0.5rem 0.75rem;
+	}
+}

@@ -1,0 +1,14 @@
+<div class="toolbar-shell">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Buscar empleado</mat-label>
+    <input matInput [formControl]="search" (input)="onSearch($event)" placeholder="Nombre, apellido o correo" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  @if (canAdd()) {
+    <button mat-flat-button color="primary" (click)="addEvent.emit()">
+      <mat-icon>person_add</mat-icon>
+      Nuevo empleado
+    </button>
+  }
+</div>

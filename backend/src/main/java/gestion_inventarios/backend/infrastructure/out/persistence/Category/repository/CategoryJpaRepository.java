@@ -17,4 +17,7 @@ public interface CategoryJpaRepository extends JpaRepository<CategoryEntity, Lon
 
     Optional<CategoryEntity> findByNameIgnoreCase(String name);
 
+    @Query("SELECT CASE WHEN COUNT(p) > 0 THEN true ELSE false END FROM ProductEntity p WHERE p.category.id = :categoryId")
+    boolean hasProducts(@Param("categoryId") Long categoryId);
+
 }

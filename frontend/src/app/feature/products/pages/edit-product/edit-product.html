@@ -1,0 +1,114 @@
+<div class="edit-page-container">
+  <div class="header">
+    <button mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Editar Producto</h1>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  } @else {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="edit-form">
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>ID del Producto (Solo lectura)</mat-label>
+          <input matInput [value]="productId()" readonly />
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>SKU</mat-label>
+          <input matInput formControlName="sku" />
+          @if (form.get('sku')?.pending) {
+            <mat-spinner matSuffix diameter="20"></mat-spinner>
+          }
+
+          @if (form.get('sku')?.touched || form.get('sku')?.dirty) {
+            @if (form.get('sku')?.hasError('skuExists')) {
+              <mat-error>Este SKU ya esta registrado en el sistema.</mat-error>
+            }
+
+            @if (form.get('sku')?.hasError('serverError')) {
+              <mat-error>{{ form.get('sku')?.getError('serverError') }}</mat-error>
+            }
+
+            @if (form.get('sku')?.hasError('required')) {
+              <mat-error>El SKU es obligatorio.</mat-error>
+            }
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Precio</mat-label>
+          <input matInput type="number" formControlName="price" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" formControlName="quantity" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Marca</mat-label>
+          <input matInput formControlName="brand" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Modelo</mat-label>
+          <input matInput formControlName="model" />
+        </mat-form-field>
+
+        <div class="category-wrapper full-width">
+          <app-select-category
+            [categoryControl]="getCategoryControl()"
+            [initialCategory]="productCategory()"
+            (selectedCategory)="onCategorySelected($event)"
+          >
+          </app-select-category>
+        </div>
+      </div>
+
+      <div class="image-management">
+        <mat-label>Imagen del Producto</mat-label>
+        <div class="current-image-container">
+          @if (currentImageUrl()) {
+            <img [src]="currentImageUrl()" alt="Preview" />
+          } @else {
+            <div class="no-image">
+              <mat-icon>image_not_supported</mat-icon>
+              <span>Sin imagen</span>
+            </div>
+          }
+        </div>
+        <button type="button" mat-stroked-button (click)="fileInput.click()">
+          <mat-icon>photo_camera</mat-icon>
+          {{ currentImageUrl() ? 'Cambiar Imagen' : 'Subir Imagen' }}
+        </button>
+        <input
+          #fileInput
+          type="file"
+          style="display: none"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+        />
+        @if (form.get('image')?.invalid && form.get('image')?.touched) {
+          <mat-error>La imagen excede el tamano permitido (2MB)</mat-error>
+        }
+      </div>
+
+      <div class="form-actions">
+        <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">
+          Actualizar Producto
+        </button>
+      </div>
+    </form>
+  }
+</div>

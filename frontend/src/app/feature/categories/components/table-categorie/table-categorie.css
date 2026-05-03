@@ -1,3 +1,22 @@
 button[mat-icon-button] {
   cursor: pointer !important;
 }
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.categories-table {
+  width: 100%;
+  min-width: 760px;
+}
+
+.desc-cell {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.actions-cell {
+  white-space: nowrap;
+}

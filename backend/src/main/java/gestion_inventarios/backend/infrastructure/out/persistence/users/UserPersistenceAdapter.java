@@ -3,11 +3,14 @@ package gestion_inventarios.backend.infrastructure.out.persistence.users;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import gestion_inventarios.backend.application.ports.out.UserRepositoryPort;
 import gestion_inventarios.backend.domain.model.User;
+import gestion_inventarios.backend.domain.model.shared.PageRequest;
+import gestion_inventarios.backend.domain.model.shared.PageResult;
 import gestion_inventarios.backend.infrastructure.out.persistence.users.entity.RoleEntity;
 import gestion_inventarios.backend.infrastructure.out.persistence.users.entity.UserEntity;
 import gestion_inventarios.backend.infrastructure.out.persistence.users.mapper.UserMapper;
@@ -33,7 +36,7 @@ public class UserPersistenceAdapter implements UserRepositoryPort {
     @Override
     @Transactional(readOnly = true)
     public Optional<User> findByEmail(String email) {
-        return Optional.ofNullable(userRepository.findByEmail(email))
+        return userRepository.findByEmail(email)
             .map(userMapper::toDomain);
     }
 
@@ -46,12 +49,38 @@ public class UserPersistenceAdapter implements UserRepositoryPort {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public PageResult<User> search(PageRequest pageRequest, String search) {
+        org.springframework.data.domain.PageRequest springPage = org.springframework.data.domain.PageRequest
+            .of(pageRequest.page(), pageRequest.size(), Sort.by(Sort.Direction.ASC, "createdAt"));
+
+        var page = userRepository.search(springPage, search == null ? "" : search.trim());
+
+        List<User> content = page.getContent().stream()
+            .map(userMapper::toDomain)
+            .toList();
+
+        return PageResult.of(content, pageRequest.page(), pageRequest.size(), page.getTotalElements());
+    }
+
+    @Override
+    @Transactional
     public User save(User user) {
         RoleEntity roleEntity = roleRepository.findByName(user.getRole().getName())
             .orElseThrow(() -> new IllegalArgumentException("Rol no encontrado: " + user.getRole().getName()));
 
-        UserEntity entity = userMapper.toEntity(user, roleEntity);
-        return userMapper.toDomain(userRepository.save(entity));
+        UserEntity entity;
+        if (user.getId() == null) {
+            entity = userMapper.toEntity(user, roleEntity);
+            entity = userRepository.save(entity);
+        } else {
+            entity = userRepository.findById(user.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con id: " + user.getId()));
+            userMapper.syncEntity(entity, user, roleEntity);
+            entity = userRepository.save(entity);
+        }
+
+        return userMapper.toDomain(entity);
     }
 
     @Override

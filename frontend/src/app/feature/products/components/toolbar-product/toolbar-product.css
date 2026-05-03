@@ -3,14 +3,21 @@
   align-items: center;
   gap: 16px;
   width: 100%;
-  max-width: 1400px;
   margin: 0 auto 20px;
+  flex-wrap: wrap;
+  padding-top: 0.35rem;
 }
 
 .search-bar {
-  flex-grow: 1;
+  flex: 3 1 320px;
+  min-width: 260px;
+}
+
+.category-select-field {
+  flex: 1 1 220px;
+  min-width: 220px;
 }
 
 mat-form-field {
-  margin-bottom: -1.25em;
+  margin-bottom: 0;
 }

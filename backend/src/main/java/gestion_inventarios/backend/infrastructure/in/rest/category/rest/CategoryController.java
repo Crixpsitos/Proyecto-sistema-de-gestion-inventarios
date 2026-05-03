@@ -1,6 +1,7 @@
 package gestion_inventarios.backend.infrastructure.in.rest.category.rest;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/api/categories")
 @RequiredArgsConstructor
 public class CategoryController {
     private final FindCategoriesUseCase findCategoriesUseCase;
@@ -34,6 +35,7 @@ public class CategoryController {
     private final DeleteCategoryUseCase deleteCategoryUseCase;
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER','EMPLOYEE')")
     public ResponseEntity<PageResult<CategoryResponse>> getAll(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
@@ -47,12 +49,16 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER','EMPLOYEE')")
     public ResponseEntity<CategoryResponse> getById(@PathVariable Long id) {
         Category category = findCategoriesUseCase.findById(id);
         return ResponseEntity.ok(CategoryResponse.from(category));
     }
 
+   
+
     @GetMapping("/search")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER','EMPLOYEE')")
     public ResponseEntity<PageResult<CategoryResponse>> search(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -67,6 +73,7 @@ public class CategoryController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
     public ResponseEntity<CategoryResponse> create(@RequestBody @Valid CategoryRequest request) {
         // Para crear, el id debe ser null
         request.setId(null);
@@ -75,6 +82,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
     public ResponseEntity<CategoryResponse> update(@PathVariable Long id, @RequestBody @Valid CategoryRequest request) {
         request.setId(id);
         Category category = saveCategoryUseCase.save(request);
@@ -82,6 +90,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         deleteCategoryUseCase.deleteById(id);
         return ResponseEntity.ok().build();

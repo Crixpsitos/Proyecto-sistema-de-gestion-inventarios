@@ -4,11 +4,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import gestion_inventarios.backend.domain.exception.DuplicateCategoryException;
+import gestion_inventarios.backend.domain.exception.CategoryDeleteNotAllowedException;
+import gestion_inventarios.backend.domain.exception.UserAlreadyExistsException;
 import gestion_inventarios.backend.domain.exception.UserNotFoundException;
 
 @RestControllerAdvice
@@ -25,6 +28,20 @@ public class GlobalExceptionHandler {
     // 409 — categoría duplicada
     @ExceptionHandler(DuplicateCategoryException.class)
     public ResponseEntity<ApiError> handleDuplicateCategory(DuplicateCategoryException ex) {
+        return ResponseEntity
+            .status(HttpStatus.CONFLICT)
+            .body(ApiError.of(409, "Conflict", ex.getMessage()));
+    }
+
+    @ExceptionHandler(CategoryDeleteNotAllowedException.class)
+    public ResponseEntity<ApiError> handleCategoryDeleteNotAllowed(CategoryDeleteNotAllowedException ex) {
+        return ResponseEntity
+            .status(HttpStatus.CONFLICT)
+            .body(ApiError.of(409, "Conflict", ex.getMessage()));
+    }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<ApiError> handleUserAlreadyExists(UserAlreadyExistsException ex) {
         return ResponseEntity
             .status(HttpStatus.CONFLICT)
             .body(ApiError.of(409, "Conflict", ex.getMessage()));
@@ -65,6 +82,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity
             .status(HttpStatus.UNAUTHORIZED)
             .body(ApiError.of(401, "Unauthorized", "Email o contraseña incorrectos"));
+    }
+
+    @ExceptionHandler(DisabledException.class)
+    public ResponseEntity<ApiError> handleDisabledUser(DisabledException ex) {
+        return ResponseEntity
+            .status(HttpStatus.UNAUTHORIZED)
+            .body(ApiError.of(401, "Unauthorized", "Usuario inactivo"));
     }
 
     // 500 — cualquier otro error no controlado

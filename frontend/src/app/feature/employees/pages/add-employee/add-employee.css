@@ -1,0 +1,55 @@
+.form-shell {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.form-header h1 {
+  margin: 0;
+}
+
+.form-header p {
+  margin: 0.25rem 0 0.9rem;
+  color: #5f6b7d;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+.permission-block {
+  border: 1px solid #dce3ef;
+  border-radius: 10px;
+  padding: 0.85rem;
+  background: #f9fbff;
+}
+
+.permission-block h3 {
+  margin: 0 0 0.65rem;
+  font-size: 0.92rem;
+  color: #1d3b72;
+}
+
+.permission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.35rem 0.65rem;
+}
+
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

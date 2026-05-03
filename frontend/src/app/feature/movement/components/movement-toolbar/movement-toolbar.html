@@ -1,0 +1,118 @@
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+  <header class="flex items-center gap-2 mb-6">
+    <mat-icon class="text-gray-500 scale-90">filter_list</mat-icon>
+    <h3 class="text-lg font-semibold text-gray-800 m-0 leading-none">Filtros</h3>
+  </header>
+
+  <section class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end" [formGroup]="filterForm">
+    <div class="flex flex-col gap-1.5 md:col-span-1">
+      <label class="text-xs font-medium text-gray-500 ml-1">Tipo</label>
+      <div class="flex border border-gray-300 rounded-md overflow-hidden bg-white h-[48px]">
+        <button
+          type="button"
+          (click)="selectType('ALL')"
+          class="flex-1 flex justify-center items-center text-sm font-semibold transition-all duration-200 focus:outline-none"
+          [class.bg-gray-700]="selectedType() === 'ALL'"
+          [class.text-white]="selectedType() === 'ALL'"
+          [class.text-gray-700]="selectedType() !== 'ALL'"
+          [class.hover:bg-gray-100]="selectedType() !== 'ALL'"
+        >
+          Todos
+        </button>
+
+        <button
+          type="button"
+          (click)="selectType('IN')"
+          class="flex-1 flex justify-center items-center border-l border-gray-300 transition-all duration-200 focus:outline-none"
+          [class.bg-green-100]="selectedType() === 'IN'"
+          [class.border-green-400]="selectedType() === 'IN'"
+          [class.hover:bg-green-50]="selectedType() !== 'IN'"
+          title="Entrada"
+        >
+          <mat-icon
+            class="scale-110"
+            [class.text-green-700]="selectedType() === 'IN'"
+            [class.text-gray-500]="selectedType() !== 'IN'"
+            >south_east</mat-icon
+          >
+        </button>
+
+        <button
+          type="button"
+          (click)="selectType('OUT')"
+          class="flex-1 flex justify-center items-center border-l border-gray-300 transition-all duration-200 focus:outline-none"
+          [class.bg-red-100]="selectedType() === 'OUT'"
+          [class.border-red-400]="selectedType() === 'OUT'"
+          [class.hover:bg-red-50]="selectedType() !== 'OUT'"
+          title="Salida"
+        >
+          <mat-icon
+            class="scale-110"
+            [class.text-red-700]="selectedType() === 'OUT'"
+            [class.text-gray-500]="selectedType() !== 'OUT'"
+            >north_west</mat-icon
+          >
+        </button>
+
+        <button
+          type="button"
+          (click)="selectType('TRANSFER')"
+          class="flex-1 flex justify-center items-center border-l border-gray-300 transition-all duration-200 focus:outline-none"
+          [class.bg-blue-100]="selectedType() === 'TRANSFER'"
+          [class.border-blue-400]="selectedType() === 'TRANSFER'"
+          [class.hover:bg-blue-50]="selectedType() !== 'TRANSFER'"
+          title="Transferencia"
+        >
+          <mat-icon
+            class="scale-110"
+            [class.text-blue-700]="selectedType() === 'TRANSFER'"
+            [class.text-gray-500]="selectedType() !== 'TRANSFER'"
+            >sync_alt</mat-icon
+          >
+        </button>
+      </div>
+    </div>
+
+
+
+    <app-dropdown-infinite-scroll
+      [fetchFn]="fetchProducts"
+      [placeholder]="'Todos los productos'"
+      [mapper]="productMapper"
+      [formControl]="productControl"
+
+    ></app-dropdown-infinite-scroll>
+
+    <app-dropdown-infinite-scroll
+      [fetchFn]="fetchLocations"
+      [placeholder]="'Todas las ubicaciones'"
+      [mapper]="locationMapper"
+      [formControl]="locationControl"
+    ></app-dropdown-infinite-scroll>
+
+
+    <mat-form-field appearance="outline" class="w-full dense-form-field">
+      <mat-label>Desde</mat-label>
+      <input
+        matInput
+        [matDatepicker]="pickerFrom"
+        placeholder="dd/mm/aaaa"
+        formControlName="dateFrom"
+      />
+      <mat-datepicker-toggle matIconSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFrom></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full dense-form-field">
+      <mat-label>Hasta</mat-label>
+      <input
+        matInput
+        [matDatepicker]="pickerTo"
+        placeholder="dd/mm/aaaa"
+        formControlName="dateTo"
+      />
+      <mat-datepicker-toggle matIconSuffix [for]="pickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTo></mat-datepicker>
+    </mat-form-field>
+  </section>
+</div>

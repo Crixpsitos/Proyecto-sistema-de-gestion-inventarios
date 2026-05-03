@@ -1,7 +1,7 @@
-<mat-drawer-container style="height: 100%;">
+<mat-drawer-container class="layout-shell">
   <mat-drawer mode="over" [(opened)]="drawerOpened">
     <nav class="flex flex-col w-64 h-full p-4 gap-1" aria-label="Navegación principal">
-      @for (route of routes; track route.path) {
+      @for (route of routes(); track route.path) {
         <a
           [routerLink]="route.path"
           routerLinkActive="bg-gray-200 font-medium"
@@ -14,11 +14,11 @@
       }
     </nav>
   </mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer-content class="layout-content">
     <app-navbar [(drawerOpened)]="drawerOpened" />
-    <main class="p-6 w-full h-full">
+    <main class="layout-main">
       <router-outlet></router-outlet>
     </main>
-    <app-footer />
+    <app-footer class="layout-footer" />
   </mat-drawer-content>
 </mat-drawer-container>

@@ -61,6 +61,12 @@ public class CategoryPersistenceAdapter implements CategoryRepositoryPort {
 
     @Override
     @Transactional(readOnly = true)
+    public boolean hasProducts(Long categoryId) {
+        return categoryRepository.hasProducts(categoryId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public PageResult<Category> search(PageRequest pageRequest, String search) {
         org.springframework.data.domain.PageRequest springPage =
             org.springframework.data.domain.PageRequest.of(pageRequest.page(), pageRequest.size());

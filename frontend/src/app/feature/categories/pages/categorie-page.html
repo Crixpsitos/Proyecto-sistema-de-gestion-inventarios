@@ -1,10 +1,33 @@
-<app-toolbar-categorie (onSearch)="handleSearch($event)" (addCategory)="handleAddCategory($event)" />
-<app-table-categorie
-  [categoriesData]="categories()"
-  [loading]="loadingData()"
-  [totalElements]="totalElements()"
-  [currentPage]="currentPage()"
-  [pageSize]="pageSize()"
-  (pageEvent)="handlePagination($event)"
-  (deleteCategory)="handleDeleteCategory($event)"
-/>
+<section class="page-shell">
+  <header class="page-hero">
+    <div>
+      <p class="eyebrow">Administracion</p>
+      <h1>Categorias</h1>
+      <p class="subtitle">Organiza las categorias base para clasificar tus productos.</p>
+    </div>
+  </header>
+
+  <section class="stats-grid">
+    <article class="stat-card">
+      <p class="stat-label">Resultados totales</p>
+      <p class="stat-value">{{ totalElements() }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">Registros en pagina</p>
+      <p class="stat-value">{{ categories().length }}</p>
+    </article>
+  </section>
+
+  <section class="content-panel">
+    <app-toolbar-categorie [canManage]="canManageCategories()" (onSearch)="handleSearch($event)" (addCategory)="handleAddCategory($event)" />
+    <app-table-categorie
+      [categoriesData]="categories()"
+      [canManage]="canManageCategories()"
+      [loading]="loadingData()"
+      [totalElements]="totalElements()"
+      [currentPage]="currentPage()"
+      [pageSize]="pageSize()"
+      (pageEvent)="handlePagination($event)"
+    />
+  </section>
+</section>

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import gestion_inventarios.backend.domain.model.category.Category;
 import gestion_inventarios.backend.infrastructure.out.persistence.Category.Entity.CategoryEntity;
+import java.util.Collections;
 
 @Component
 public class CategoryMapper {
@@ -13,6 +14,13 @@ public class CategoryMapper {
     }
 
     public CategoryEntity toEntity(Category c) {
-        return new CategoryEntity(c.getId(), c.getName(), c.getDescription(), c.getCreatedAt(), c.getUpdatedAt());
+        return new CategoryEntity(
+            c.getId(),
+            c.getName(),
+            c.getDescription(),
+            Collections.emptyList(),
+            c.getCreatedAt(),
+            c.getUpdatedAt()
+        );
     }
 }

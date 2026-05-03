@@ -1,0 +1,47 @@
+<!-- infinite-select.component.html -->
+<div class="select-wrapper">
+  <div class="select-trigger" (click)="toggleDropdown()">
+    <span>{{ selectedItem()?.label || placeholder() }}</span>
+    <span class="arrow" [class.open]="isOpen()">▼</span>
+  </div>
+
+  @if (isOpen()) {
+    <div
+      class="select-dropdown"
+      infinite-scroll
+      [scrollWindow]="false"
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="300"
+      [infiniteScrollDisabled]="isLoading() || noMoreItems()"
+      (scrolled)="onScrollDown()"
+    >
+    <div class="select-option" (click)="selectItem({ id: 0, label: 'Todas las ubicaciones' })"
+      [class.selected]="selectedItem()?.id === 0"
+
+      >
+      Todas las ubicaciones
+    </div>
+      @for (item of items(); track item.id) {
+        <div
+          class="select-option"
+          [class.selected]="item.id === selectedItem()?.id"
+          (click)="selectItem(item)"
+        >
+          {{ item.label }}
+        </div>
+      } @empty {
+        @if (!isLoading()) {
+          <div class="empty">Sin resultados</div>
+        }
+      }
+
+      @if (isLoading()) {
+        <div class="loading">Cargando...</div>
+      }
+
+      @if (noMoreItems() && !isLoading()) {
+        <div class="no-more">No hay más opciones</div>
+      }
+    </div>
+  }
+</div>

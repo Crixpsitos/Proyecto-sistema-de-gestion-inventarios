@@ -22,4 +22,16 @@ export class Product {
     return this.http.get<ProductResponse>(`${environment.apiUrl}/api/products/search?page=${page}&size=${size}&search=${search}`);
   }
 
+  public getProductsByCategory(page: number, size: number, categoryId: number): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(`${environment.apiUrl}/api/products/category/${categoryId}?page=${page}&size=${size}`);
+  }
+
+  public getProductById(id: string): Observable<ProductModel> {
+    return this.http.get<ProductModel>(`${environment.apiUrl}/api/products/${id}`);
+  }
+
+  public updateProduct(id: string, product: FormData): Observable<ProductModel> {
+    return this.http.put<ProductModel>(`${environment.apiUrl}/api/products/${id}`, product);
+  }
+
 }

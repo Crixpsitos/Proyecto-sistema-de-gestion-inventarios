@@ -29,10 +29,13 @@ public class UserMapper {
             .map(up -> new Permission(up.getPermission().getId(), up.getPermission().getName()))
             .collect(Collectors.toSet());
 
-        DocumentIdentity documentIdentity = new DocumentIdentity(
-            entity.getDocumentIdentity().getDocumentType(),
-            entity.getDocumentIdentity().getDocumentNumber()
-        );
+        DocumentIdentity documentIdentity = null;
+        if (entity.getDocumentIdentity() != null) {
+            documentIdentity = new DocumentIdentity(
+                entity.getDocumentIdentity().getDocumentType(),
+                entity.getDocumentIdentity().getDocumentNumber()
+            );
+        }
 
         return new User(
             entity.getId(),
@@ -53,10 +56,7 @@ public class UserMapper {
 
   
     public UserEntity toEntity(User user, RoleEntity roleEntity) {
-        DocumentIdentityEmbeddable docEmbeddable = new DocumentIdentityEmbeddable(
-            user.getDocumentIdentity().getDocumentType(),
-            user.getDocumentIdentity().getDocumentNumber()
-        );
+        DocumentIdentityEmbeddable docEmbeddable = toDocumentEmbeddable(user);
 
         return new UserEntity(
             user.getName(),
@@ -66,6 +66,31 @@ public class UserMapper {
             user.getPhone(),
             docEmbeddable,
             roleEntity
+        );
+    }
+
+    public void syncEntity(UserEntity entity, User user, RoleEntity roleEntity) {
+        DocumentIdentityEmbeddable docEmbeddable = toDocumentEmbeddable(user);
+        entity.syncState(
+            user.getName(),
+            user.getLastName(),
+            user.getEmail(),
+            user.getPassword(),
+            user.getPhone(),
+            docEmbeddable,
+            user.isEnabled(),
+            roleEntity
+        );
+    }
+
+    private DocumentIdentityEmbeddable toDocumentEmbeddable(User user) {
+        if (user.getDocumentIdentity() == null) {
+            return null;
+        }
+
+        return new DocumentIdentityEmbeddable(
+            user.getDocumentIdentity().getDocumentType(),
+            user.getDocumentIdentity().getDocumentNumber()
         );
     }
 

@@ -1,0 +1,8 @@
+.mat-mdc-form-field-subscript-wrapper {
+  position: relative !important;
+}
+
+.mat-mdc-form-field {
+  display: flex;
+  flex-direction: column;
+}

@@ -21,14 +21,6 @@ public record UserProfileResponse(
             .map(p -> p.getName())
             .collect(Collectors.toSet());
 
-        user.getExtraPermissions().stream()
-            .map(p -> p.getName())
-            .forEach(allPermissions::add);
-
-        user.getDeniedPermissions().stream()
-            .map(p -> p.getName())
-            .forEach(allPermissions::remove);
-
         return new UserProfileResponse(
             user.getId(),
             user.getName(),

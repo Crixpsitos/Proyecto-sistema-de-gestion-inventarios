@@ -25,7 +25,6 @@ export class AddProduct {
     name: string | null;
     description: string | null;
     price: number | null;
-    stock: number | null;
     image: null | File;
     brand: string | null;
     model: string | null;
@@ -45,7 +44,6 @@ export class AddProduct {
     formData.append('name', product.name || '');
     formData.append('description', product.description || '');
     formData.append('price', (product.price || 0).toString());
-    formData.append('stock', (product.stock || 0).toString());
     formData.append('brand', product.brand || '');
     formData.append('model', product.model || '');
     formData.append('category', (product.category || 0).toString());

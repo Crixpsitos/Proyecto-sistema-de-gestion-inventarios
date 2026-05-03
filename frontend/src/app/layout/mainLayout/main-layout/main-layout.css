@@ -1,4 +1,26 @@
 :host {
   display: block;
-  height: 100%;
+  min-height: 100dvh;
+}
+
+.layout-shell {
+  min-height: 100dvh;
+}
+
+.layout-content {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  flex: 1 1 auto;
+  width: 100%;
+  padding: 1.5rem;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.layout-footer {
+  margin-top: auto;
 }

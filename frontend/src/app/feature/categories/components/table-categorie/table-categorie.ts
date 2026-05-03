@@ -17,6 +17,7 @@ export class TableCategorie {
   private router = inject(Router);
 
   public categoriesData = input<Category[]>([]);
+  public canManage = input(false);
   public loading = input<boolean>(false);
 
 
@@ -25,12 +26,6 @@ export class TableCategorie {
   public currentPage = input<number>(0);
   public totalElements = input<number>(0);
   public pageEvent = output<PageEvent>();
-
-  public deleteCategory = output<number>();
-
-  public handleDeleteCategory(id: number): void {
-    this.deleteCategory.emit(id);
-  }
 
   public handlePageEvent(event: PageEvent) {
     this.pageEvent.emit(event);

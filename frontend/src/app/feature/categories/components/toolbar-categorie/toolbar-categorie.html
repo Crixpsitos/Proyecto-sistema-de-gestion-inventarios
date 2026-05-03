@@ -1,12 +1,14 @@
-<mat-toolbar>
-  <mat-form-field appearance="outline" class="w-96">
+<div class="toolbar-shell">
+  <mat-form-field appearance="outline" class="search-field">
     <mat-label>Buscar categoría</mat-label>
     <input matInput [formControl]="search" placeholder="Escribe para buscar..." />
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
   <span class="spacer"></span>
+  @if (canManage()) {
   <button mat-flat-button aria-label="Agregar categoría" (click)="openDialog()">
     <mat-icon matButtonIcon>add</mat-icon>
     Agregar categoría
   </button>
-</mat-toolbar>
+  }
+</div>

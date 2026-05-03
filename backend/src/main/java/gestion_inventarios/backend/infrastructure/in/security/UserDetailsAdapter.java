@@ -25,20 +25,9 @@ public class UserDetailsAdapter implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<String> denied = user.getDeniedPermissions().stream()
-            .map(p -> p.getName())
-            .collect(Collectors.toSet());
-
-    
         Set<GrantedAuthority> authorities = user.getRole().getPermissions().stream()
-            .filter(p -> !denied.contains(p.getName()))
             .map(p -> new SimpleGrantedAuthority(p.getName()))
             .collect(Collectors.toSet());
-
-     
-        user.getExtraPermissions().stream()
-            .map(p -> new SimpleGrantedAuthority(p.getName()))
-            .forEach(authorities::add);
 
         authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().getName()));
 

@@ -9,6 +9,7 @@ import gestion_inventarios.backend.application.ports.in.FindSearchCategoriesUseC
 import gestion_inventarios.backend.application.ports.in.SaveCategoryUseCase;
 import gestion_inventarios.backend.application.ports.out.CategoryRepositoryPort;
 import gestion_inventarios.backend.domain.exception.CategoryNotFoundException;
+import gestion_inventarios.backend.domain.exception.CategoryDeleteNotAllowedException;
 import gestion_inventarios.backend.domain.exception.DuplicateCategoryException;
 import gestion_inventarios.backend.domain.model.category.Category;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;
@@ -67,6 +68,10 @@ public class CategoryService implements FindCategoriesUseCase, FindSearchCategor
 
         if (categoryExist == null) {
             throw new CategoryNotFoundException(id);
+        }
+
+        if (categoryRepository.hasProducts(id)) {
+            throw new CategoryDeleteNotAllowedException(id);
         }
             
         categoryRepository.deleteById(id);

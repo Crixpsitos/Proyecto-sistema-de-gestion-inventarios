@@ -1,0 +1,47 @@
+<section class="page-shell">
+    <header class="page-hero">
+        <div>
+            <p class="eyebrow">Infraestructura</p>
+            <h1>Locaciones</h1>
+            <p class="subtitle">Administra bodegas y puntos fisicos para tus movimientos.</p>
+        </div>
+    </header>
+
+    <section class="stats-grid">
+        <article class="stat-card">
+            <p class="stat-label">Resultados totales</p>
+            <p class="stat-value">{{ totalElements() }}</p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Registros en pagina</p>
+            <p class="stat-value">{{ locations().length }}</p>
+        </article>
+    </section>
+
+    <section class="content-panel">
+        <app-location-toolbar
+            [searchTerm]="search()"
+            [selectedType]="type()"
+            [onlyActive]="onlyActive()"
+            [canManage]="canManageLocations()"
+            (activeOnly)="handleOnlyActiveChange($event)"
+            (typeChange)="handleTypeChange($event)"
+            (searchEvent)="handleSearch($event)"
+            (addLocation)="navigateToAddLocation()"
+        />
+
+        <div class="panel-body">
+            @if (loadingData()) {
+                <div class="loading-wrap">
+                    <mat-spinner></mat-spinner>
+                </div>
+            } @else {
+                <app-location-card [locations]="locations()" [canManage]="canManageLocations()" (deactiveLocationEvent)="deactivateLocation($event)" (activateLocationEvent)="activateLocation($event)"></app-location-card>
+            }
+        </div>
+
+        <div class="paginator-wrap">
+            <app-paginator [pageSize]="pageSize()" [currentPage]="currentPage()" [totalElements]="totalElements()" (pageEvent)="handlePagination($event)"></app-paginator>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,88 @@
+<div class="table-container mat-elevation-z8">
+  <div class="table-scroll">
+  <table mat-table [dataSource]="dataSource()" class="movement-table">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+      <td mat-cell *matCellDef="let element">
+        <span [class]="getMovementClass(element.type?.value)">
+          <mat-icon class="movement-type-icon">
+            {{ getMovementIcon(element.type?.value) }}
+          </mat-icon>
+
+          <span>{{ element.type?.label }}</span>
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="product">
+      <th mat-header-cell *matHeaderCellDef>Producto</th>
+      <td mat-cell *matCellDef="let element">
+        @if (element.product?.id) {
+          <a [routerLink]="['/productos', element.product.id, 'editar']"
+             class="text-blue-600 hover:text-blue-800 underline transition-colors cursor-pointer">
+            {{ element.product.name }}
+          </a>
+        } @else {
+          <span class="text-gray-500">N/A</span>
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="source">
+      <th mat-header-cell *matHeaderCellDef>Origen</th>
+      <td mat-cell *matCellDef="let element">
+        @if (element.source?.id) {
+          <a [routerLink]="['/editar-ubicacion', element.source.id]"
+             class="text-blue-600 hover:text-blue-800 underline transition-colors cursor-pointer">
+            {{ element.source.name }}
+          </a>
+        } @else {
+          <span class="text-gray-400">-</span>
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="destination">
+      <th mat-header-cell *matHeaderCellDef>Destino</th>
+      <td mat-cell *matCellDef="let element">
+        @if (element.destination?.id) {
+          <a [routerLink]="['/editar-ubicacion', element.destination.id]"
+             class="text-blue-600 hover:text-blue-800 underline transition-colors cursor-pointer">
+            {{ element.destination.name }}
+          </a>
+        } @else {
+          <span class="text-gray-400">-</span>
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="notes">
+      <th mat-header-cell *matHeaderCellDef>Notas</th>
+      <td mat-cell *matCellDef="let element">{{ element.notes }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let element">{{ element.createdAt | date: 'dd/MM/yyyy HH:mm' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdBy">
+      <th mat-header-cell *matHeaderCellDef>Usuario</th>
+      <td mat-cell *matCellDef="let element">{{ element.createdBy }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  </div>
+</div>

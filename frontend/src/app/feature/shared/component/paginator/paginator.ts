@@ -1,11 +1,15 @@
 import { Component, input, output } from '@angular/core';
-import { MatPaginator, PageEvent } from "@angular/material/paginator";
+import { MatPaginator, MatPaginatorIntl, PageEvent } from "@angular/material/paginator";
+import { CustomPagination } from '../../../../core/services/paginator/custom-pagination';
 
 @Component({
   selector: 'app-paginator',
   imports: [MatPaginator],
   templateUrl: './paginator.html',
   styleUrl: './paginator.css',
+  providers: [
+    { provide: MatPaginatorIntl, useClass: CustomPagination }
+  ]
 })
 export class Paginator {
 

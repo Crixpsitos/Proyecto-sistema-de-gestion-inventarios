@@ -2,6 +2,7 @@ package gestion_inventarios.backend.infrastructure.in.security;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,10 @@ public class AuthService implements AuthUseCase {
     public RefreshTokenResponse refreshToken(String refreshToken) {
         String email = jwtService.extractUsername(refreshToken);
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+
+        if (!userDetails.isEnabled()) {
+            throw new DisabledException("Usuario inactivo");
+        }
 
         if (!jwtService.isRefreshTokenValid(refreshToken, userDetails)) {
             throw new IllegalArgumentException("Refresh token inválido o expirado");

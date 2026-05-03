@@ -1,0 +1,40 @@
+<section class="page-shell">
+  <header class="page-hero">
+    <div>
+      <p class="eyebrow">Gestión de acceso</p>
+      <h1>Empleados</h1>
+      <p class="subtitle">Administra cuentas, rol y permisos individuales.</p>
+    </div>
+  </header>
+
+  <section class="stats-grid">
+    <article class="stat-card">
+      <p class="stat-label">Resultados totales</p>
+      <p class="stat-value">{{ totalElements() }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">Registros en página</p>
+      <p class="stat-value">{{ employees().length }}</p>
+    </article>
+  </section>
+
+  <section class="content-panel">
+    <app-employee-toolbar [canAdd]="canCreate()" (searchEvent)="onSearch($event)" (addEvent)="onAdd()" />
+    <app-employee-table
+      [employees]="employees()"
+      [canUpdate]="canUpdate()"
+      (editEvent)="onEdit($event)"
+      (activateEvent)="onActivate($event)"
+      (deactivateEvent)="onDeactivate($event)"
+    />
+
+    <div class="paginator-container">
+      <app-paginator
+        [pageSize]="pageSize()"
+        [currentPage]="currentPage()"
+        [totalElements]="totalElements()"
+        (pageEvent)="onPaginate($event)"
+      />
+    </div>
+  </section>
+</section>

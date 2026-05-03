@@ -1,0 +1,85 @@
+<div class="location-grid">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        @for (location of locations(); track location.id) {
+            <mat-card
+                [class.opacity-75]="!location.active"
+                [class.location-inactive]="!location.active"
+                class="location-card border border-slate-200 shadow-sm transition-all duration-300">
+                <mat-card-content class="p-4">
+
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex gap-3">
+                            <div
+                                [class.bg-cyan-100]="location.active" [class.text-cyan-800]="location.active"
+                                [class.bg-slate-200]="!location.active" [class.text-slate-500]="!location.active"
+                                class="flex items-center justify-center w-10 h-10 rounded-xl shrink-0 transition-colors">
+                                <mat-icon class="text-xl leading-none">location_on</mat-icon>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-base font-bold text-slate-900 leading-tight">{{ location.name }}</span>
+                                <span class="text-xs font-mono text-slate-500 uppercase tracking-tight">{{ location.code }}</span>
+                            </div>
+                        </div>
+                        <span
+                            [class.bg-rose-100]="!location.active" [class.text-rose-700]="!location.active"
+                            class="text-[10px] font-bold px-2 py-1 rounded-md bg-slate-100 text-slate-700 uppercase border border-slate-200 transition-colors shrink-0">
+                            {{ location.type }}
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-sm text-slate-600 mb-4 h-10 line-clamp-2">
+                        <mat-icon class="text-base w-4 h-4 shrink-0 text-slate-400">map</mat-icon>
+                        <span>{{ location.address }}</span>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="grid grid-cols-2 gap-3 py-4">
+                        <div class="metric-card">
+                            <span class="metric-label">Movimientos</span>
+                            <span class="metric-value">{{ location.movementCount }}</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Stock actual</span>
+                            <span class="metric-value">{{ location.currentStock }}</span>
+                        </div>
+                    </div>
+
+                    @if (canManage()) {
+                    <div class="flex gap-2">
+                        <button (click)="editLocation(location)" mat-stroked-button color="primary"
+                            class="flex-1 rounded-lg inline-flex items-center justify-center gap-2 h-10 hover:bg-cyan-50 transition-colors">
+                            <mat-icon class="text-lg w-5 h-5 m-0">edit</mat-icon>
+                            <span class="font-medium">Editar</span>
+                        </button>
+
+                        @if (location.active) {
+                            <button (click)="deactivateLocation(location.id)" mat-stroked-button color="warn"
+                                class="flex-1 rounded-lg border-rose-200 hover:bg-rose-50 inline-flex items-center justify-center gap-2 h-10">
+                                <mat-icon class="text-lg w-5 h-5 m-0">block</mat-icon>
+                                <span class="font-medium">Desactivar</span>
+                            </button>
+                        } @else {
+                            <button (click)="activateLocation(location.id)" mat-stroked-button
+                                class="flex-1 rounded-lg border-emerald-200 text-emerald-700 hover:bg-emerald-50 inline-flex items-center justify-center gap-2 h-10">
+                                <mat-icon class="text-lg w-5 h-5 m-0">check_circle</mat-icon>
+                                <span class="font-medium">Activar</span>
+                            </button>
+                        }
+                    </div>
+                    }
+                </mat-card-content>
+            </mat-card>
+        } @empty {
+            <div class="col-span-full flex flex-col items-center justify-center p-10 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl text-center">
+                <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-5">
+                    <mat-icon class="text-3xl w-8 h-8 leading-none text-slate-400">location_off</mat-icon>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">No hay ubicaciones registradas</h3>
+                <p class="text-slate-500 max-w-md mx-auto">
+                    Parece que aún no has registrado ningún almacén o sede. Haz clic en el botón de "Nueva Locación" para comenzar.
+                </p>
+            </div>
+        }
+    </div>
+</div>

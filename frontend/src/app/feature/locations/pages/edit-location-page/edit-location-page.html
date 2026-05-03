@@ -1,0 +1,103 @@
+<div class="max-w-4xl mx-auto p-6">
+    <div class="flex items-center gap-4 mb-8">
+        <button mat-icon-button (click)="goBack()" type="button" class="bg-white shadow-sm border border-gray-100">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div>
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight m-0">Editar Ubicación</h1>
+            <p class="text-gray-500 text-sm">Modifica los detalles de la ubicación seleccionada.</p>
+        </div>
+    </div>
+
+    @if (isLoading()) {
+        <div class="flex justify-center items-center h-64">
+            <mat-spinner diameter="50"></mat-spinner>
+        </div>
+    } @else {
+        <mat-card class="rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+            <mat-card-content class="p-8">
+                <form id="editForm" [formRoot]="editForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Información de Referencia (No editable) -->
+                    <div class="col-span-full grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-4 rounded-xl mb-2">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>ID del Sistema</mat-label>
+                            <input matInput [value]="locationId()" readonly />
+                            <mat-icon matPrefix class="text-gray-400 mr-2">fingerprint</mat-icon>
+                            <mat-icon matSuffix class="text-gray-400">lock</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>Código identificador</mat-label>
+                            <input matInput [formField]="editForm.code" />
+                            <mat-icon matPrefix class="text-gray-400 mr-2">qr_code</mat-icon>
+                            <mat-icon matSuffix class="text-gray-400">lock</mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- Nombre -->
+                    <div class="flex flex-col">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>Nombre de la ubicación</mat-label>
+                            <mat-icon matPrefix class="text-gray-400 mr-2">business</mat-icon>
+                            <input matInput [formField]="editForm.name" placeholder="Ej. Almacén Central">
+                        </mat-form-field>
+                        @if (editForm.name().invalid() && editForm.name().touched()) {
+                            @for (error of editForm.name().errors(); track error.kind) {
+                                <mat-error class="text-xs mt-1 ml-4">{{ error.message }}</mat-error>
+                            }
+                        }
+                    </div>
+
+                    <!-- Tipo -->
+                    <div class="flex flex-col">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>Tipo de locación</mat-label>
+                            <mat-icon matPrefix class="text-gray-400 mr-2">category</mat-icon>
+                            <mat-select [formField]="editForm.type">
+                                @for (types of locationTypes(); track $index) {
+                                    <mat-option [value]="types.value">{{ types.label }}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                        @if (editForm.type().invalid() && editForm.type().touched()) {
+                            @for (error of editForm.type().errors(); track error.kind) {
+                                <mat-error class="text-xs mt-1 ml-4">{{ error.message }}</mat-error>
+                            }
+                        }
+                    </div>
+
+                    <!-- Dirección -->
+                    <div class="col-span-full flex flex-col">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>Dirección física / Descripción</mat-label>
+                            <mat-icon matPrefix class="text-gray-400 mr-2">place</mat-icon>
+                            <input matInput [formField]="editForm.address" placeholder="Ej. Av. Principal 123, Ciudad">
+                        </mat-form-field>
+                        @if (editForm.address().invalid() && editForm.address().touched()) {
+                            @for (error of editForm.address().errors(); track error.kind) {
+                                <mat-error class="text-xs mt-1 ml-4">{{ error.message }}</mat-error>
+                            }
+                        }
+                    </div>
+
+                </form>
+            </mat-card-content>
+
+            <mat-divider></mat-divider>
+
+            <div class="bg-gray-50 p-6 flex justify-end gap-3">
+                <button (click)="goBack()" mat-stroked-button type="button" class="rounded-xl px-6 h-12">
+                    Cancelar
+                </button>
+                <button
+                    [disabled]="editForm().invalid() || isSaving() || editForm().pending()"
+                    type="submit" form="editForm"
+                    class="flex items-center justify-center gap-2 rounded-xl px-8 h-12 shadow-md font-medium transition-all duration-200 bg-blue-600 text-white hover:bg-blue-700 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed">
+                    @if (isSaving()) { <mat-spinner diameter="20" color="accent"></mat-spinner> }
+                    <mat-icon>save</mat-icon> Actualizar Ubicación
+                </button>
+            </div>
+        </mat-card>
+    }
+</div>

@@ -8,6 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../../../core/services/user/user';
 
 @Component({
   selector: 'app-categorie-page',
@@ -23,6 +24,7 @@ export class CategoriePage implements OnInit {
   private route = inject(ActivatedRoute);
   private destroyRef = inject(DestroyRef);
   private snackBar = inject(MatSnackBar);
+  private userService = inject(User);
 
   public categories = signal<CategoryModel[]>([]);
   public totalElements = signal(0);
@@ -31,6 +33,11 @@ export class CategoriePage implements OnInit {
 
   public currentPage = signal(0);
   public pageSize = signal(10);
+  public canManageCategories = signal(false);
+
+  constructor() {
+    this.canManageCategories.set(this.userService.hasRole('ADMIN', 'MANAGER'));
+  }
 
   ngOnInit() {
     this.route.queryParams
@@ -126,25 +133,4 @@ export class CategoriePage implements OnInit {
     this.router.navigate(['/categorias', category.id, 'editar']);
   }
 
-  public handleDeleteCategory(id: number): void {
-    this.categoryService.deleteCategory(id).subscribe({
-      next: () => {
-        this.snackBar.open('Categoría eliminada exitosamente', 'Cerrar', { duration: 4000 });
-
-        if (this.currentPage() === 0) {
-          this.loadData(0, this.pageSize(), this.search());
-        } else {
-          this.router.navigate([], {
-            relativeTo: this.route,
-            queryParams: { page: 0 },
-            queryParamsHandling: 'merge',
-          });
-        }
-      },
-      error: (err: HttpErrorResponse) => {
-        this.loadingData.set(false);
-        this.snackBar.open(err.message, 'Cerrar', { duration: 4000 });
-      }
-    });
-  }
 }

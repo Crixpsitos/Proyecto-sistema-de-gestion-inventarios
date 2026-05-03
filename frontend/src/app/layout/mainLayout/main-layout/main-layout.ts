@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { Navbar } from "../../navbar/navbar";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Footer } from '../../footer/footer';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { User } from '../../../core/services/user/user';
 
 @Component({
   selector: 'app-main-layout',
@@ -14,12 +15,20 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class MainLayout {
 
+  private readonly userService = inject(User);
+
   protected drawerOpened = signal(false);
 
-  protected routes = [
-    { path: '', name: 'Inventarios', icon: 'inventory_2' },
-    { path: 'categorias', name: 'Categorías', icon: 'category' },
-    { path: 'productos', name: 'Productos', icon: 'product' },
+  private readonly allRoutes = [
+    { path: '', name: 'Dashboard', icon: 'dashboard', roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
+    { path: 'inventarios', name: 'Inventarios', icon: 'inventory_2', roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
+    { path: 'categorias', name: 'Categorías', icon: 'category', roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
+    { path: 'productos', name: 'Productos', icon: 'label', roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
+    { path: 'locaciones', name: 'Locaciones', icon: 'location_on', roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
+    { path: 'movimientos', name: 'Movimientos', icon: 'sync_alt', roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
+    { path: 'empleados', name: 'Empleados', icon: 'groups', roles: ['ADMIN', 'MANAGER'] }
   ];
+
+  protected routes = computed(() => this.allRoutes.filter((route) => this.userService.hasRole(...route.roles)));
 
 }

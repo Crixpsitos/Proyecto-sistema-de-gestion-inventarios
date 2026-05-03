@@ -1,0 +1,107 @@
+<section class="dashboard-shell">
+
+  @if (loading()) {
+    <section class="status-panel">Cargando dashboard...</section>
+  } @else if (!dashboard()) {
+    <section class="status-panel error">
+      <mat-icon>error</mat-icon>
+      No se pudo cargar la información del dashboard.
+    </section>
+  } @else {
+    <section class="kpi-grid">
+      <article class="kpi-card">
+        <p class="kpi-label">Productos</p>
+        <p class="kpi-value">{{ dashboard()!.overview.totalProducts }}</p>
+      </article>
+      <article class="kpi-card">
+        <p class="kpi-label">Categorías</p>
+        <p class="kpi-value">{{ dashboard()!.overview.totalCategories }}</p>
+      </article>
+      <article class="kpi-card">
+        <p class="kpi-label">Locaciones</p>
+        <p class="kpi-value">{{ dashboard()!.overview.totalLocations }}</p>
+      </article>
+      <article class="kpi-card">
+        <p class="kpi-label">Stock total</p>
+        <p class="kpi-value">{{ dashboard()!.overview.totalStock }}</p>
+      </article>
+      <article class="kpi-card">
+        <p class="kpi-label">Movimientos</p>
+        <p class="kpi-value">{{ dashboard()!.overview.totalMovements }}</p>
+      </article>
+      <article class="kpi-card accent">
+        <p class="kpi-label">Último movimiento</p>
+        <p class="kpi-date">{{ formatDate(dashboard()!.overview.lastMovementAt) }}</p>
+      </article>
+    </section>
+
+    <section class="panel-grid">
+      <article class="panel-card">
+        <h2>Métricas de movimientos</h2>
+        <div class="metric-row"><span>Hoy</span><strong>{{ dashboard()!.movementMetrics.today }}</strong></div>
+        <div class="metric-row"><span>Últimos 7 días</span><strong>{{ dashboard()!.movementMetrics.last7Days }}</strong></div>
+        <div class="metric-row"><span>Entradas (7 días)</span><strong>{{ dashboard()!.movementMetrics.last7DaysIn }}</strong></div>
+        <div class="metric-row"><span>Salidas (7 días)</span><strong>{{ dashboard()!.movementMetrics.last7DaysOut }}</strong></div>
+        <div class="metric-row"><span>Transferencias (7 días)</span><strong>{{ dashboard()!.movementMetrics.last7DaysTransfer }}</strong></div>
+        <div class="metric-row balance"><span>Balance (entradas - salidas)</span><strong>{{ stockBalance() }}</strong></div>
+      </article>
+
+      <article class="panel-card">
+        <h2>Top productos</h2>
+        <div class="list-scroll">
+          @for (item of dashboard()!.topProducts; track item.productId) {
+            <div class="list-row">
+              <div>
+                <p class="title">{{ item.name }}</p>
+                <p class="meta">SKU: {{ item.sku }}</p>
+              </div>
+              <div class="right">
+                <strong>{{ item.totalQuantity }}</strong>
+                <p class="meta">{{ item.totalMovements }} mov.</p>
+              </div>
+            </div>
+          }
+        </div>
+      </article>
+
+      <article class="panel-card">
+        <h2>Stock por locación</h2>
+        <div class="list-scroll">
+          @for (item of dashboard()!.stockByLocation; track item.locationId) {
+            <div class="list-row">
+              <div>
+                <p class="title">{{ item.locationName }}</p>
+                <p class="meta">Código: {{ item.locationCode }}</p>
+              </div>
+              <div class="right">
+                <strong>{{ item.totalStock }}</strong>
+              </div>
+            </div>
+          }
+        </div>
+      </article>
+
+      <article class="panel-card alert-panel">
+        <h2>Alertas de stock bajo</h2>
+        @if (dashboard()!.alerts.length === 0) {
+          <p class="empty">Sin alertas activas.</p>
+        } @else {
+          <div class="list-scroll">
+            @for (item of dashboard()!.alerts; track item.productId) {
+              <div class="list-row alert">
+                <div>
+                  <p class="title">{{ item.name }}</p>
+                  <p class="meta">SKU: {{ item.sku }}</p>
+                </div>
+                <div class="right">
+                  <strong>{{ item.totalStock }}</strong>
+                  <p class="meta">umbral: {{ item.threshold }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </article>
+    </section>
+  }
+</section>
