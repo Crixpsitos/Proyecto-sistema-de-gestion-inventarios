@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, inject, model } from '@angular/core
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { User } from '../../core/services/user/user';
+import { User } from '@/core/user/services/user.service';
 import { MatMenuModule } from '@angular/material/menu';
-import { Auth } from '../../core/services/auth/auth';
+import { Auth } from '@/core/services/auth/auth';
 import { Router } from '@angular/router';
 
 @Component({

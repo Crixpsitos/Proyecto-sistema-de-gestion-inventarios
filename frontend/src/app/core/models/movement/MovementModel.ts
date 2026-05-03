@@ -1,6 +1,6 @@
-import { Product as ProductModel } from "../Product/Product";
-import { LocationModel } from "../location/LocationModel";
-import { MovementType } from "./MovementType";
+import { Product as ProductModel } from "@/core/models/Product/Product";
+import { LocationModel } from "@/core/models/location/LocationModel";
+import { MovementType } from "@/core/models/movement/MovementType";
 
 export interface MovementModel {
     id: number;

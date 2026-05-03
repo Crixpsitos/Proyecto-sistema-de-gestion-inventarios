@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddLocation } from './add-location';
+import { AddLocation } from '@/feature/locations/pages/add-location/add-location';
 
 describe('AddLocation', () => {
   let component: AddLocation;

@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { EmployeeModel } from '../../../../core/models/employee/EmployeeModel';
+import { EmployeeModel } from '@/core/models/employee/EmployeeModel';
 
 @Component({
   selector: 'app-employee-table',

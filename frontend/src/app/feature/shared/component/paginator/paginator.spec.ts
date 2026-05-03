@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Paginator } from './paginator';
+import { Paginator } from '@/feature/shared/component/paginator/paginator';
 
 describe('Paginator', () => {
   let component: Paginator;

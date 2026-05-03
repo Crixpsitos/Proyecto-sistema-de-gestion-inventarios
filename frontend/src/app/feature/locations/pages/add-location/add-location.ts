@@ -16,10 +16,10 @@ import {
   TreeValidationResult
 } from '@angular/forms/signals';
 import { Router } from '@angular/router';
-import { LocationService } from '../../../../core/services/location/LocationService';
+import { LocationService } from '@/core/services/location/LocationService';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LocationRequest, LocationType } from '../../../../core/models/location/LocationRequest';
-import { environment } from '../../../../../environments/environment';
+import { LocationRequest, LocationType } from '@/core/models/location/LocationRequest';
+import { environment } from '@env/environment';
 
 
 

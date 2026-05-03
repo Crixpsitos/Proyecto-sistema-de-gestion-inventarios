@@ -1,7 +1,7 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { DashboardModel } from '../../../core/models/dashboard/Dashboard';
-import { DashboardService } from '../../../core/services/dashboard/dashboard';
+import { DashboardModel } from '@/core/models/dashboard/Dashboard';
+import { DashboardService } from '@/core/services/dashboard/dashboard';
 
 @Component({
   selector: 'app-dashboard-page',

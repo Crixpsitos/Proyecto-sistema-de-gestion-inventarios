@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal, OnInit } from '@angular/core';
-import { ToolbarCategorie } from "../components/toolbar-categorie/toolbar-categorie";
-import { TableCategorie } from "../components/table-categorie/table-categorie";
-import { Category } from '../../../core/services/category/category';
-import { Category as CategoryModel } from '../../../core/models/category/Category';
+import { ToolbarCategorie } from "@/feature/categories/components/toolbar-categorie/toolbar-categorie";
+import { TableCategorie } from "@/feature/categories/components/table-categorie/table-categorie";
+import { Category } from '@/core/services/category/category';
+import { Category as CategoryModel } from '@/core/models/category/Category';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from '../../../core/services/user/user';
+import { User } from '@/core/user/services/user.service';
 
 @Component({
   selector: 'app-categorie-page',

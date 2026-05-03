@@ -2,7 +2,7 @@ import { Component, inject, input, output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { LocationModel } from '../../../../core/models/location/LocationModel';
+import { LocationModel } from '@/core/models/location/LocationModel';
 import { Router } from '@angular/router';
 
 

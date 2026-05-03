@@ -9,14 +9,14 @@ import { PageEvent } from '@angular/material/paginator';
 import { switchMap, catchError } from 'rxjs/operators'; // <-- IMPORTA catchError
 import { of } from 'rxjs';
 
-import { Product } from '../../../../core/services/product/product';
-import { Product as ProductModel } from '../../../../core/models/Product/Product';
-import { Category as CategoryModel } from '../../../../core/models/category/Category';
-import { ProductTableComponent } from '../../components/product-table/product-table';
-import { Paginator } from '../../../shared/component/paginator/paginator';
-import { ToolbarProduct } from '../../components/toolbar-product/toolbar-product';
-import { MovementFormComponent } from '../../../movement/components/movement-form-component/movement-form-component';
-import { User } from '../../../../core/services/user/user';
+import { Product } from '@/core/services/product/product';
+import { Product as ProductModel } from '@/core/models/Product/Product';
+import { Category as CategoryModel } from '@/core/models/category/Category';
+import { ProductTableComponent } from '@/feature/products/components/product-table/product-table';
+import { Paginator } from '@/feature/shared/component/paginator/paginator';
+import { ToolbarProduct } from '@/feature/products/components/toolbar-product/toolbar-product';
+import { MovementFormComponent } from '@/feature/movement/components/movement-form-component/movement-form-component';
+import { User } from '@/core/user/services/user.service';
 
 
 @Component({

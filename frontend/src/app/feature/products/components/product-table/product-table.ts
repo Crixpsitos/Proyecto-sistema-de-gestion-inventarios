@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { Product } from '../../../../core/models/Product/Product'; // Ajusta la ruta
+import { Product } from '@/core/models/Product/Product'; // Ajusta la ruta
 import { Router } from '@angular/router';
 
 @Component({

@@ -7,8 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { distinctUntilChanged } from 'rxjs/internal/operators/distinctUntilChanged';
-import { LocationService } from '../../../../core/services/location/LocationService';
-import { LocationType } from '../../../../core/models/location/LocationRequest';
+import { LocationService } from '@/core/services/location/LocationService';
+import { LocationType } from '@/core/models/location/LocationRequest';
 import { Router } from '@angular/router';
 
 @Component({

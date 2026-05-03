@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovementTable } from './movement-table';
+import { MovementTable } from '@/feature/movement/components/movement-table/movement-table';
 
 describe('MovementTable', () => {
   let component: MovementTable;

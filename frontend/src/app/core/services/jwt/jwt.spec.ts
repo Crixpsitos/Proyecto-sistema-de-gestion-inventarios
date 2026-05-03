@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Jwt } from './jwt';
+import { Jwt } from '@/core/services/jwt/jwt';
 
 describe('Jwt', () => {
   let service: Jwt;

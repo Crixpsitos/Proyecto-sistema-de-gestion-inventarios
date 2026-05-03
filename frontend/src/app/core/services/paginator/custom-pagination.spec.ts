@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CustomPagination } from './custom-pagination';
+import { CustomPagination } from '@/core/services/paginator/custom-pagination';
 
 describe('CustomPagination', () => {
   let service: CustomPagination;

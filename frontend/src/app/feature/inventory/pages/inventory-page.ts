@@ -2,10 +2,10 @@ import { Component, DestroyRef, OnInit, computed, inject, signal } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
-import { InventoryService } from '../../../core/services/inventory/inventory-service';
-import { InventoryModel } from '../../../core/models/inventory/InventoryModel';
-import { InventoryResponse } from '../../../core/models/inventory/InventoryResponse';
-import { Paginator } from '../../shared/component/paginator/paginator';
+import { InventoryService } from '@/core/services/inventory/inventory-service';
+import { InventoryModel } from '@/core/models/inventory/InventoryModel';
+import { InventoryResponse } from '@/core/models/inventory/InventoryResponse';
+import { Paginator } from '@/feature/shared/component/paginator/paginator';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({

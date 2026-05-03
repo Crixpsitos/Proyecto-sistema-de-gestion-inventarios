@@ -9,16 +9,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { map } from 'rxjs';
 
-import { DropdownInfiniteScroll } from '../../../shared/component/dropdown-infinite-scroll/dropdown-infinite-scroll';
-import { FetchFn } from '../../../shared/interfaces/FetchFn';
-import { MapperFn } from '../../../shared/interfaces/MapperFn';
-import { Product as ProductService } from '../../../../core/services/product/product';
-import { LocationService } from '../../../../core/services/location/LocationService';
+import { DropdownInfiniteScroll } from '@/feature/shared/component/dropdown-infinite-scroll/dropdown-infinite-scroll';
+import { FetchFn } from '@/feature/shared/interfaces/FetchFn';
+import { MapperFn } from '@/feature/shared/interfaces/MapperFn';
+import { Product as ProductService } from '@/core/services/product/product';
+import { LocationService } from '@/core/services/location/LocationService';
 
-import { Product } from '../../../../core/models/Product/Product';
-import { LocationModel } from '../../../../core/models/location/LocationModel';
-import { MovementService } from '../../../../core/services/movement/movement-service';
-import { MovementCreateRequest } from '../../../../core/models/movement/MovementCreateRequest';
+import { Product } from '@/core/models/Product/Product';
+import { LocationModel } from '@/core/models/location/LocationModel';
+import { MovementService } from '@/core/services/movement/movement-service';
+import { MovementCreateRequest } from '@/core/models/movement/MovementCreateRequest';
 
 type MovementType = 'IN' | 'OUT' | 'TRANSFER';
 

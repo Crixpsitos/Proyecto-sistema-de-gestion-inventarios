@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { catchError, map, Observable, of, switchMap, timer } from 'rxjs';
-import { environment } from '../../../../environments/environment.development';
+import { environment } from '@env/environment.development';
 
 export function skuAsyncValidator(http: HttpClient, currentSku: string = ''): AsyncValidatorFn {
   return (control: AbstractControl): Observable<ValidationErrors | null> => {

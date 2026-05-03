@@ -12,6 +12,16 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/app/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ]
+    },
+    "rootDir": "./src",
     "target": "ES2022",
     "module": "preserve"
   },

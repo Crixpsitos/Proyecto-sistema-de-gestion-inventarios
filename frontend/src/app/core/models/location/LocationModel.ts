@@ -1,4 +1,4 @@
-import { LocationType } from "./LocationRequest";
+import { LocationType } from "@/core/models/location/LocationRequest";
 
 export interface LocationModel {
     id: number;

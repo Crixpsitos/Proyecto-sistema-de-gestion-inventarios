@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateCategoryDialog } from '../create-category-dialog/create-category-dialog';
+import { CreateCategoryDialog } from '@/feature/categories/components/create-category-dialog/create-category-dialog';
 
 
 @Component({

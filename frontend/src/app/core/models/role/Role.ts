@@ -1,4 +1,4 @@
-import { Permissions } from "../permissions/Permissions";
+import { Permissions } from "@/core/models/permissions/Permissions";
 
 export interface Role {
   id : number;

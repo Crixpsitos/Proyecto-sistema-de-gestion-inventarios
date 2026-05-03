@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToolbarCategorie } from './toolbar-categorie';
+import { ToolbarCategorie } from '@/feature/categories/components/toolbar-categorie/toolbar-categorie';
 
 describe('ToolbarCategorie', () => {
   let component: ToolbarCategorie;

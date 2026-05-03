@@ -3,13 +3,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { switchMap } from 'rxjs';
-import { EmployeeService } from '../../../../core/services/employee/employee';
-import { EmployeeModel } from '../../../../core/models/employee/EmployeeModel';
-import { EmployeeToolbar } from '../../components/employee-toolbar/employee-toolbar';
-import { EmployeeTable } from '../../components/employee-table/employee-table';
-import { Paginator } from '../../../shared/component/paginator/paginator';
+import { EmployeeService } from '@/core/services/employee/employee';
+import { EmployeeModel } from '@/core/models/employee/EmployeeModel';
+import { EmployeeToolbar } from '@/feature/employees/components/employee-toolbar/employee-toolbar';
+import { EmployeeTable } from '@/feature/employees/components/employee-table/employee-table';
+import { Paginator } from '@/feature/shared/component/paginator/paginator';
 import { PageEvent } from '@angular/material/paginator';
-import { User } from '../../../../core/services/user/user';
+import { User } from '@/core/user/services/user.service';
 
 @Component({
   selector: 'app-employee-page',

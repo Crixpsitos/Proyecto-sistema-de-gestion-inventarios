@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Category } from '../../../../core/services/category/category';
+import { Category } from '@/core/services/category/category';
 
 @Component({
   selector: 'app-edit-category-page',

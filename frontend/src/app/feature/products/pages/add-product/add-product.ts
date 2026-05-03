@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Product as ProductService } from '../../../../core/services/product/product';
-import { AddFormProduct } from "../../components/add-form-product/add-form-product";
+import { Product as ProductService } from '@/core/services/product/product';
+import { AddFormProduct } from "@/feature/products/components/add-form-product/add-form-product";
 
 @Component({
   selector: 'app-add-product',

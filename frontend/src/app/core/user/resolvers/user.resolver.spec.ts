@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
-import { userResolver } from './user-resolver';
+import { userResolver } from '@/core/user/resolvers/user.resolver';
 
 describe('userResolver', () => {
   const executeResolver: ResolveFn<boolean> = (...resolverParameters) =>

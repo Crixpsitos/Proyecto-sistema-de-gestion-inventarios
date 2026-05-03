@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Jwt } from '../jwt/jwt';
-import { User as UserModel } from '../../models/user/User';
-import { User } from '../user/user';
+import { Jwt } from '@/core/services/jwt/jwt';
+import { User as UserModel } from '@/core/user/models/user.model';
+import { User } from '@/core/user/services/user.service';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { environment } from '../../../../environments/environment.development';
+import { environment } from '@env/environment.development';
 
 @Injectable({
   providedIn: 'root',

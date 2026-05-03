@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovementFormComponent } from './movement-form-component';
+import { MovementFormComponent } from '@/feature/movement/components/movement-form-component/movement-form-component';
 
 describe('MovementFormComponent', () => {
   let component: MovementFormComponent;

@@ -1,5 +1,5 @@
-import { Category } from "../category/Category";
-import type { ProductPrice } from "./ProductPrice";
+import { Category } from "@/core/models/category/Category";
+import type { ProductPrice } from "@/core/models/Product/ProductPrice";
 
 export interface Product {
     id: string;

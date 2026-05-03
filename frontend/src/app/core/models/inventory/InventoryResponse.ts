@@ -1,4 +1,4 @@
-import { InventoryModel } from './InventoryModel';
+import { InventoryModel } from '@/core/models/inventory/InventoryModel';
 
 export interface InventoryResponse {
   content: InventoryModel[];

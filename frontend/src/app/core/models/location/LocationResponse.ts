@@ -1,4 +1,4 @@
-import { LocationModel } from './LocationModel';
+import { LocationModel } from '@/core/models/location/LocationModel';
 
 export interface LocationResponse {
   content: LocationModel[];

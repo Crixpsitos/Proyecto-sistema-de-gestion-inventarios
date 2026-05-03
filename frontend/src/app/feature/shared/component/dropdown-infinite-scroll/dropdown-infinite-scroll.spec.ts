@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownInfiniteScroll } from './dropdown-infinite-scroll';
+import { DropdownInfiniteScroll } from '@/feature/shared/component/dropdown-infinite-scroll/dropdown-infinite-scroll';
 
 describe('DropdownInfiniteScroll', () => {
   let component: DropdownInfiniteScroll;

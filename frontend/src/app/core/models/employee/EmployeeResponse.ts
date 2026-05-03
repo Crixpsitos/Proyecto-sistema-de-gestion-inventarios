@@ -1,4 +1,4 @@
-import { EmployeeModel } from './EmployeeModel';
+import { EmployeeModel } from '@/core/models/employee/EmployeeModel';
 
 export interface EmployeeResponse {
   content: EmployeeModel[];

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { Navbar } from "../../navbar/navbar";
+import { Navbar } from "@/layout/navbar/navbar";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { Footer } from '../../footer/footer';
+import { Footer } from '@/layout/footer/footer';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { User } from '../../../core/services/user/user';
+import { User } from '@/core/user/services/user.service';
 
 @Component({
   selector: 'app-main-layout',

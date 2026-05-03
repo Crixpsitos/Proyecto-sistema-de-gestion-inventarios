@@ -6,11 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Product as ProductService } from '../../../../core/services/product/product';
-import { SelectCategory } from '../../components/select-category/select-category';
-import { Category } from '../../../../core/models/category/Category';
-import { validatorImage } from '../../validators/ValidatorImage';
-import { skuAsyncValidator } from '../../validators/product-validators';
+import { Product as ProductService } from '@/core/services/product/product';
+import { SelectCategory } from '@/feature/products/components/select-category/select-category';
+import { Category } from '@/core/models/category/Category';
+import { validatorImage } from '@/feature/products/validators/ValidatorImage';
+import { skuAsyncValidator } from '@/feature/products/validators/product-validators';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 

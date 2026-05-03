@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductResponse } from '../../models/Product/ProductResponse';
-import { environment } from '../../../../environments/environment.development';
-import { Product as ProductModel } from '../../models/Product/Product';
+import { ProductResponse } from '@/core/models/Product/ProductResponse';
+import { environment } from '@env/environment.development';
+import { Product as ProductModel } from '@/core/models/Product/Product';
 
 @Injectable()
 export class Product {

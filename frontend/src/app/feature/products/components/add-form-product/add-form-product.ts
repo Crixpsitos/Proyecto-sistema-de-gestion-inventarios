@@ -3,11 +3,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, Validators } from '@angular/forms';
-import { validatorImage } from '../../validators/ValidatorImage';
+import { validatorImage } from '@/feature/products/validators/ValidatorImage';
 import { MatIconModule } from '@angular/material/icon';
-import { SelectCategory } from '../select-category/select-category';
-import { Category } from '../../../../core/models/category/Category';
-import { skuAsyncValidator } from '../../validators/product-validators';
+import { SelectCategory } from '@/feature/products/components/select-category/select-category';
+import { Category } from '@/core/models/category/Category';
+import { skuAsyncValidator } from '@/feature/products/validators/product-validators';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 

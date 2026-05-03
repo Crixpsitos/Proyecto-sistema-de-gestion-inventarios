@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovementToolbar } from './movement-toolbar';
+import { MovementToolbar } from '@/feature/movement/components/movement-toolbar/movement-toolbar';
 
 describe('MovementToolbar', () => {
   let component: MovementToolbar;

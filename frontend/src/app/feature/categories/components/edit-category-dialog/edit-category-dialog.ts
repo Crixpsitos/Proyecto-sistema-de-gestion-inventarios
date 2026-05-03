@@ -11,7 +11,7 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import { Category } from '../../../../core/models/category/Category';
+import { Category } from '@/core/models/category/Category';
 
 @Component({
   selector: 'app-edit-category-dialog',

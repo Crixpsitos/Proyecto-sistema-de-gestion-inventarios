@@ -3,10 +3,10 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { SelectCategory } from '../select-category/select-category';
-import { Category } from '../../../../core/models/category/Category';
-import { Category as ModelCategory } from '../../../../core/models/category/Category';
-import { Category as CategoryService } from '../../../../core/services/category/category';
+import { SelectCategory } from '@/feature/products/components/select-category/select-category';
+import { Category } from '@/core/models/category/Category';
+import { Category as ModelCategory } from '@/core/models/category/Category';
+import { Category as CategoryService } from '@/core/services/category/category';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 

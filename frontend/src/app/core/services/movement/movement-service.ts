@@ -1,11 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../../environments/environment.development';
-import { MovementFilters } from '../../models/movement/MovementFilters';
+import { environment } from '@env/environment.development';
+import { MovementFilters } from '@/core/models/movement/MovementFilters';
 import { Observable } from 'rxjs';
-import { MovementResponse } from '../../models/movement/MovementResponse';
-import { MovementCreateRequest } from '../../models/movement/MovementCreateRequest';
-import { MovementModel } from '../../models/movement/MovementModel';
+import { MovementResponse } from '@/core/models/movement/MovementResponse';
+import { MovementCreateRequest } from '@/core/models/movement/MovementCreateRequest';
+import { MovementModel } from '@/core/models/movement/MovementModel';
 
 @Injectable()
 export class MovementService {

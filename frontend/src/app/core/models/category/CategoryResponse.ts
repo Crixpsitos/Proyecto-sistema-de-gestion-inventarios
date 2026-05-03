@@ -1,4 +1,4 @@
-import { Category } from "./Category";
+import { Category } from "@/core/models/category/Category";
 
 export interface CategoryResponse {
   content: Category[];

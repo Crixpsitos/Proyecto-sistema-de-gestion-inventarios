@@ -1,4 +1,4 @@
-import { MovementModel } from "./MovementModel";
+import { MovementModel } from "@/core/models/movement/MovementModel";
 
 export interface MovementResponse {
     content: MovementModel[];

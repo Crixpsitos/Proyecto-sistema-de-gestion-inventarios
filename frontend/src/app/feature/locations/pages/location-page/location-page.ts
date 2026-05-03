@@ -1,17 +1,17 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LocationService } from '../../../../core/services/location/LocationService';
+import { LocationService } from '@/core/services/location/LocationService';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
-import { LocationModel } from '../../../../core/models/location/LocationModel';
-import { LocationCard } from '../../components/location-card/location-card';
+import { LocationModel } from '@/core/models/location/LocationModel';
+import { LocationCard } from '@/feature/locations/components/location-card/location-card';
 import { PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Paginator } from '../../../shared/component/paginator/paginator';
+import { Paginator } from '@/feature/shared/component/paginator/paginator';
 import { of } from 'rxjs';
-import { LocationToolbar } from '../../components/location-toolbar/location-toolbar';
-import { User } from '../../../../core/services/user/user';
+import { LocationToolbar } from '@/feature/locations/components/location-toolbar/location-toolbar';
+import { User } from '@/core/user/services/user.service';
 
 @Component({
   selector: 'app-location',

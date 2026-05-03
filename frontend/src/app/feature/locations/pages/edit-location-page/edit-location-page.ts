@@ -24,8 +24,8 @@ import {
   FormRoot,
   disabled
 } from '@angular/forms/signals';
-import { LocationService } from '../../../../core/services/location/LocationService';
-import { LocationRequest } from '../../../../core/models/location/LocationRequest';
+import { LocationService } from '@/core/services/location/LocationService';
+import { LocationRequest } from '@/core/models/location/LocationRequest';
 
 @Component({
   selector: 'app-edit-location-page',

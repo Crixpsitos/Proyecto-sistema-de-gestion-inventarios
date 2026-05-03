@@ -1,4 +1,4 @@
-import { Product } from "./Product";
+import { Product } from "@/core/models/Product/Product";
 
 export interface ProductResponse {
     content: Product[];

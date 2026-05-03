@@ -1,17 +1,17 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { MovementService } from '../../../../core/services/movement/movement-service';
-import { MovementModel } from '../../../../core/models/movement/MovementModel';
-import { MovementTable } from '../../components/movement-table/movement-table';
-import { MovementToolbar } from '../../components/movement-toolbar/movement-toolbar';
-import { MovementFilters } from '../../../../core/models/movement/MovementFilters';
+import { MovementService } from '@/core/services/movement/movement-service';
+import { MovementModel } from '@/core/models/movement/MovementModel';
+import { MovementTable } from '@/feature/movement/components/movement-table/movement-table';
+import { MovementToolbar } from '@/feature/movement/components/movement-toolbar/movement-toolbar';
+import { MovementFilters } from '@/core/models/movement/MovementFilters';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MovementFormComponent } from '../../components/movement-form-component/movement-form-component';
+import { MovementFormComponent } from '@/feature/movement/components/movement-form-component/movement-form-component';
 import { MatDialog } from '@angular/material/dialog';
-import { Paginator } from '../../../shared/component/paginator/paginator';
+import { Paginator } from '@/feature/shared/component/paginator/paginator';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({

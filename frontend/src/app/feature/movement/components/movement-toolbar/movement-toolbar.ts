@@ -6,15 +6,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MovementFilters } from '../../../../core/models/movement/MovementFilters';
-import { Product as ProductService } from '../../../../core/services/product/product';
-import { LocationService } from '../../../../core/services/location/LocationService';
-import { Product } from '../../../../core/models/Product/Product';
-import { LocationModel } from '../../../../core/models/location/LocationModel';
-import { DropdownInfiniteScroll } from '../../../shared/component/dropdown-infinite-scroll/dropdown-infinite-scroll';
-import { FetchFn } from '../../../shared/interfaces/FetchFn';
+import { MovementFilters } from '@/core/models/movement/MovementFilters';
+import { Product as ProductService } from '@/core/services/product/product';
+import { LocationService } from '@/core/services/location/LocationService';
+import { Product } from '@/core/models/Product/Product';
+import { LocationModel } from '@/core/models/location/LocationModel';
+import { DropdownInfiniteScroll } from '@/feature/shared/component/dropdown-infinite-scroll/dropdown-infinite-scroll';
+import { FetchFn } from '@/feature/shared/interfaces/FetchFn';
 import { map } from 'rxjs';
-import { MapperFn } from '../../../shared/interfaces/MapperFn';
+import { MapperFn } from '@/feature/shared/interfaces/MapperFn';
 
 @Component({
   selector: 'app-movement-toolbar',

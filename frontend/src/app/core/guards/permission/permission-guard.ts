@@ -1,8 +1,8 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { catchError, map, of } from 'rxjs';
-import { Auth } from '../../services/auth/auth';
-import { User } from '../../services/user/user';
+import { Auth } from '@/core/services/auth/auth';
+import { User } from '@/core/user/services/user.service';
 
 export const permissionGuard: CanActivateFn = (route) => {
   const requiredRoles = (route.data?.['roles'] as string[] | undefined)?.map((r) => r.toUpperCase()) || [];

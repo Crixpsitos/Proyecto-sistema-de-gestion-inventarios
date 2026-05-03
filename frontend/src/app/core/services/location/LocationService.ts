@@ -1,10 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LocationModel } from '../../models/location/LocationModel';
-import { LocationRequest } from '../../models/location/LocationRequest';
-import { LocationResponse } from '../../models/location/LocationResponse';
-import { environment } from '../../../../environments/environment';
+import { LocationModel } from '@/core/models/location/LocationModel';
+import { LocationRequest } from '@/core/models/location/LocationRequest';
+import { LocationResponse } from '@/core/models/location/LocationResponse';
+import { environment } from '@env/environment';
 
 @Injectable()
 export class LocationService {

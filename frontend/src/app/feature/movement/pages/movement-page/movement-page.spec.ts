@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovementPage } from './movement-page';
+import { MovementPage } from '@/feature/movement/pages/movement-page/movement-page';
 
 describe('MovementPage', () => {
   let component: MovementPage;

@@ -1,12 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment.development';
-import { EmployeeResponse } from '../../models/employee/EmployeeResponse';
-import { EmployeeModel } from '../../models/employee/EmployeeModel';
-import { EmployeeCreateRequest } from '../../models/employee/EmployeeCreateRequest';
-import { EmployeeUpdateRequest } from '../../models/employee/EmployeeUpdateRequest';
-import { EmployeePermissionsRequest } from '../../models/employee/EmployeePermissionsRequest';
+import { environment } from '@env/environment.development';
+import { EmployeeResponse } from '@/core/models/employee/EmployeeResponse';
+import { EmployeeModel } from '@/core/models/employee/EmployeeModel';
+import { EmployeeCreateRequest } from '@/core/models/employee/EmployeeCreateRequest';
+import { EmployeeUpdateRequest } from '@/core/models/employee/EmployeeUpdateRequest';
+import { EmployeePermissionsRequest } from '@/core/models/employee/EmployeePermissionsRequest';
 
 @Injectable()
 export class EmployeeService {

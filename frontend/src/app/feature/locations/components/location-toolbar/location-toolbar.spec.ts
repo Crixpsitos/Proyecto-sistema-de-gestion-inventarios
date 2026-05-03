@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LocationToolbar } from './location-toolbar';
+import { LocationToolbar } from '@/feature/locations/components/location-toolbar/location-toolbar';
 
 describe('LocationToolbar', () => {
   let component: LocationToolbar;

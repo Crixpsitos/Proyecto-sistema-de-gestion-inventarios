@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectCategory } from './select-category';
+import { SelectCategory } from '@/feature/products/components/select-category/select-category';
 
 describe('SelectCategory', () => {
   let component: SelectCategory;

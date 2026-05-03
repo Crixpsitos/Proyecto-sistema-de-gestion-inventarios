@@ -1,7 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MovementModel } from '../../../../core/models/movement/MovementModel';
+import { MovementModel } from '@/core/models/movement/MovementModel';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 

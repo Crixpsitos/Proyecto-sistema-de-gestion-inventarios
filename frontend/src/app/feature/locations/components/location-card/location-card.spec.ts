@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LocationCard } from './location-card';
+import { LocationCard } from '@/feature/locations/components/location-card/location-card';
 
 describe('LocationCard', () => {
   let component: LocationCard;

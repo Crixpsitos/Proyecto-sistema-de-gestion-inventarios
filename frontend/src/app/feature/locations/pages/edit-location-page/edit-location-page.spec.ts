@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditLocationPage } from './edit-location-page';
+import { EditLocationPage } from '@/feature/locations/pages/edit-location-page/edit-location-page';
 
 describe('EditLocationPage', () => {
   let component: EditLocationPage;

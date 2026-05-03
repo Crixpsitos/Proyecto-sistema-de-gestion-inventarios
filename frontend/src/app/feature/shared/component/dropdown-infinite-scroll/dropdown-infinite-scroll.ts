@@ -11,9 +11,9 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { Subject, takeUntil } from 'rxjs';
-import type { FetchFn } from '../../interfaces/FetchFn';
-import type { MapperFn } from '../../interfaces/MapperFn';
-import type { SelectItem } from '../../interfaces/SelectItem';
+import type { FetchFn } from '@/feature/shared/interfaces/FetchFn';
+import type { MapperFn } from '@/feature/shared/interfaces/MapperFn';
+import type { SelectItem } from '@/feature/shared/interfaces/SelectItem';
 
 @Component({
   selector: 'app-dropdown-infinite-scroll',
