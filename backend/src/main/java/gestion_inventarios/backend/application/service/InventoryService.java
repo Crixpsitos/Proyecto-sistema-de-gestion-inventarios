@@ -3,8 +3,8 @@ package gestion_inventarios.backend.application.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import gestion_inventarios.backend.application.ports.in.FindInventoryUseCase;
-import gestion_inventarios.backend.application.ports.out.InventoryRepositoryPort;
+import gestion_inventarios.backend.application.ports.in.inventory.FindInventoryUseCase;
+import gestion_inventarios.backend.application.ports.out.inventory.InventoryRepositoryPort;
 import gestion_inventarios.backend.domain.model.inventory.Inventory;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;
 import gestion_inventarios.backend.domain.model.shared.PageResult;

@@ -3,7 +3,7 @@ package gestion_inventarios.backend.infrastructure.out.persistence.location;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
-import gestion_inventarios.backend.application.ports.out.LocationRepositoryPort;
+import gestion_inventarios.backend.application.ports.out.location.LocationRepositoryPort;
 import gestion_inventarios.backend.domain.exception.LocationNotFoundException;
 import gestion_inventarios.backend.domain.model.locations.Location;
 import gestion_inventarios.backend.domain.model.locations.LocationCode;

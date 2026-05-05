@@ -1,14 +1,14 @@
 package gestion_inventarios.backend.infrastructure.in.security;
 
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import gestion_inventarios.backend.application.ports.in.AuthUseCase;
-import gestion_inventarios.backend.application.ports.in.FindUserCase;
+import gestion_inventarios.backend.application.ports.in.auth.AuthUseCase;
+import gestion_inventarios.backend.application.ports.in.user.FindUserUseCase;
 import gestion_inventarios.backend.infrastructure.in.rest.auth.dto.LoginResponse;
 import gestion_inventarios.backend.infrastructure.in.rest.auth.dto.RefreshTokenResponse;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class AuthService implements AuthUseCase {
 
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
-    private final FindUserCase findUserCase;
+    private final FindUserUseCase findUserCase;
     private final UserDetailsService userDetailsService;
 
     @Override

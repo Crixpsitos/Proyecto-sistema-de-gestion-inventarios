@@ -1,11 +1,11 @@
 package gestion_inventarios.backend.infrastructure.out.persistence.inventory;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import gestion_inventarios.backend.application.ports.out.InventoryRepositoryPort;
+import gestion_inventarios.backend.application.ports.out.inventory.InventoryRepositoryPort;
 import gestion_inventarios.backend.domain.model.inventory.Inventory;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;
 import gestion_inventarios.backend.domain.model.shared.PageResult;

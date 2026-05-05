@@ -43,7 +43,8 @@ public class HttpSecurityConfig {
                 authConfig.requestMatchers(HttpMethod.POST, "/api/auth/refresh").permitAll();
                 authConfig.requestMatchers("/uploads/**").permitAll();
                 authConfig.requestMatchers("/error").permitAll();
-                authConfig.anyRequest().authenticated();
+                authConfig.requestMatchers("/api/**").authenticated();
+                authConfig.anyRequest().permitAll();
             });
 
         return http.build();

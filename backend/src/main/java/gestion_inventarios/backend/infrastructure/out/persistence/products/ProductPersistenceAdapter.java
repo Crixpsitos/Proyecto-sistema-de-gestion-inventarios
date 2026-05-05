@@ -7,7 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import gestion_inventarios.backend.application.ports.out.ProductRepositoryPort;
+import gestion_inventarios.backend.application.ports.out.product.ProductRepositoryPort;
 import gestion_inventarios.backend.domain.model.products.Product;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;
 import gestion_inventarios.backend.domain.model.shared.PageResult;

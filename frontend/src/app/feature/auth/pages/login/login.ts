@@ -5,6 +5,7 @@ import { LoginForm } from '@/feature/auth/components/login-form/login-form';
   selector: 'app-login',
   imports: [LoginForm],
   templateUrl: './login.html',
-  host: { class: 'block h-full w-full' },
+  styleUrls: ['./login.css'],
+  host: { class: 'block min-h-screen w-full' },
 })
 export class Login {}

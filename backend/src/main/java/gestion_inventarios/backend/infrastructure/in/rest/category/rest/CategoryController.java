@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import gestion_inventarios.backend.application.ports.in.DeleteCategoryUseCase;
-import gestion_inventarios.backend.application.ports.in.FindCategoriesUseCase;
-import gestion_inventarios.backend.application.ports.in.FindSearchCategoriesUseCase;
-import gestion_inventarios.backend.application.ports.in.SaveCategoryUseCase;
+import gestion_inventarios.backend.application.ports.in.category.DeleteCategoryUseCase;
+import gestion_inventarios.backend.application.ports.in.category.FindCategoriesUseCase;
+import gestion_inventarios.backend.application.ports.in.category.FindSearchCategoriesUseCase;
+import gestion_inventarios.backend.application.ports.in.category.SaveCategoryUseCase;
 import gestion_inventarios.backend.domain.model.category.Category;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;
 import gestion_inventarios.backend.domain.model.shared.PageResult;

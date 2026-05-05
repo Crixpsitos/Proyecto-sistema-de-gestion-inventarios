@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import gestion_inventarios.backend.application.ports.in.FindCategoriesUseCase;
-import gestion_inventarios.backend.application.ports.in.ProductUseCase;
+import gestion_inventarios.backend.application.ports.in.category.FindCategoriesUseCase;
+import gestion_inventarios.backend.application.ports.in.product.ProductUseCase;
 import gestion_inventarios.backend.domain.model.products.Product;
 import gestion_inventarios.backend.domain.model.products.ProductPrice;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;

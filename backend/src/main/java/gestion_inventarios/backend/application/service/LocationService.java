@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
-import gestion_inventarios.backend.application.ports.in.LocationUseCase;
-import gestion_inventarios.backend.application.ports.out.LocationRepositoryPort;
+import gestion_inventarios.backend.application.ports.in.location.LocationUseCase;
+import gestion_inventarios.backend.application.ports.out.location.LocationRepositoryPort;
 import gestion_inventarios.backend.domain.exception.LocationCodeAlreadyExistsException;
 import gestion_inventarios.backend.domain.model.locations.Location;
 import gestion_inventarios.backend.domain.model.locations.LocationCode;

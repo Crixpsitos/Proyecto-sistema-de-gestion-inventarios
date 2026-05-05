@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import gestion_inventarios.backend.domain.model.category.Category;
 import gestion_inventarios.backend.domain.model.products.Product;
-import gestion_inventarios.backend.infrastructure.out.persistence.Category.Entity.CategoryEntity;
+import gestion_inventarios.backend.infrastructure.out.persistence.category.entity.CategoryEntity;
 import gestion_inventarios.backend.infrastructure.out.persistence.products.entity.ProductEntity;
 import gestion_inventarios.backend.infrastructure.out.persistence.products.entity.ProductPriceEmbeddable;
 

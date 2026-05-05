@@ -1,12 +1,12 @@
 package gestion_inventarios.backend.infrastructure.out.persistence.users.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import java.util.Optional;
 
 import gestion_inventarios.backend.infrastructure.out.persistence.users.entity.UserEntity;
 

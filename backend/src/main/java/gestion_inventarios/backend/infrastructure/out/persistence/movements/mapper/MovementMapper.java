@@ -5,7 +5,7 @@ import java.util.Collections;
 import org.springframework.stereotype.Component;
 
 import gestion_inventarios.backend.domain.model.movements.Movement;
-import gestion_inventarios.backend.infrastructure.out.persistence.Category.Entity.CategoryEntity;
+import gestion_inventarios.backend.infrastructure.out.persistence.category.entity.CategoryEntity;
 import gestion_inventarios.backend.infrastructure.out.persistence.location.entity.LocationCodeEmbeddable;
 import gestion_inventarios.backend.infrastructure.out.persistence.location.entity.LocationEntity;
 import gestion_inventarios.backend.infrastructure.out.persistence.location.mapper.LocationMapper;

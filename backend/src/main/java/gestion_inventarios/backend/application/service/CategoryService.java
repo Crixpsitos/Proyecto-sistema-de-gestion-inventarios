@@ -3,13 +3,13 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
-import gestion_inventarios.backend.application.ports.in.DeleteCategoryUseCase;
-import gestion_inventarios.backend.application.ports.in.FindCategoriesUseCase;
-import gestion_inventarios.backend.application.ports.in.FindSearchCategoriesUseCase;
-import gestion_inventarios.backend.application.ports.in.SaveCategoryUseCase;
-import gestion_inventarios.backend.application.ports.out.CategoryRepositoryPort;
-import gestion_inventarios.backend.domain.exception.CategoryNotFoundException;
+import gestion_inventarios.backend.application.ports.in.category.DeleteCategoryUseCase;
+import gestion_inventarios.backend.application.ports.in.category.FindCategoriesUseCase;
+import gestion_inventarios.backend.application.ports.in.category.FindSearchCategoriesUseCase;
+import gestion_inventarios.backend.application.ports.in.category.SaveCategoryUseCase;
+import gestion_inventarios.backend.application.ports.out.category.CategoryRepositoryPort;
 import gestion_inventarios.backend.domain.exception.CategoryDeleteNotAllowedException;
+import gestion_inventarios.backend.domain.exception.CategoryNotFoundException;
 import gestion_inventarios.backend.domain.exception.DuplicateCategoryException;
 import gestion_inventarios.backend.domain.model.category.Category;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;

@@ -1,15 +1,16 @@
 package gestion_inventarios.backend.infrastructure.in.rest.inventory.rest;
 
+import java.util.UUID;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.UUID;
 
-import gestion_inventarios.backend.application.ports.in.FindInventoryUseCase;
-import gestion_inventarios.backend.application.ports.in.LocationUseCase;
-import gestion_inventarios.backend.application.ports.in.ProductUseCase;
+import gestion_inventarios.backend.application.ports.in.inventory.FindInventoryUseCase;
+import gestion_inventarios.backend.application.ports.in.location.LocationUseCase;
+import gestion_inventarios.backend.application.ports.in.product.ProductUseCase;
 import gestion_inventarios.backend.domain.model.inventory.Inventory;
 import gestion_inventarios.backend.domain.model.locations.Location;
 import gestion_inventarios.backend.domain.model.products.Product;

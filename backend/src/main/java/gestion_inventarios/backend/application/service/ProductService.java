@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import gestion_inventarios.backend.application.ports.in.ProductUseCase;
-import gestion_inventarios.backend.application.ports.out.ProductRepositoryPort;
+import gestion_inventarios.backend.application.ports.in.product.ProductUseCase;
+import gestion_inventarios.backend.application.ports.out.product.ProductRepositoryPort;
 import gestion_inventarios.backend.domain.model.products.Product;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;
 import gestion_inventarios.backend.domain.model.shared.PageResult;

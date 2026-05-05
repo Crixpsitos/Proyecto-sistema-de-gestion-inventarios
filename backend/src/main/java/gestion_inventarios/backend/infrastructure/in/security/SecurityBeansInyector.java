@@ -10,15 +10,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import gestion_inventarios.backend.application.ports.in.FindUserCase;
-import gestion_inventarios.backend.domain.exception.UserNotFoundException;
+import gestion_inventarios.backend.application.ports.in.user.FindUserUseCase;
+import gestion_inventarios.backend.domain.exception.user.UserNotFoundException;
 
 @Configuration
 public class SecurityBeansInyector {
 
-    private final FindUserCase findUserCase;
+    private final FindUserUseCase findUserCase;
 
-    public SecurityBeansInyector(FindUserCase findUserCase) {
+    public SecurityBeansInyector(FindUserUseCase findUserCase) {
         this.findUserCase = findUserCase;
     }
 

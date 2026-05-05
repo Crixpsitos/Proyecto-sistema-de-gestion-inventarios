@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import gestion_inventarios.backend.application.ports.in.AuthUseCase;
+import gestion_inventarios.backend.application.ports.in.auth.AuthUseCase;
 import gestion_inventarios.backend.infrastructure.in.rest.auth.dto.LoginResponse;
 import gestion_inventarios.backend.infrastructure.in.rest.auth.dto.LoginUserRequest;
 import gestion_inventarios.backend.infrastructure.in.rest.auth.dto.RefreshRequest;

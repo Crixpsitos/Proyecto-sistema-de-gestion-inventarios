@@ -1,6 +1,6 @@
 package gestion_inventarios.backend.infrastructure.in.rest.employee.dto;
 
-import gestion_inventarios.backend.domain.model.DocumentType;
+import gestion_inventarios.backend.domain.model.user.DocumentType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,6 +1,6 @@
 package gestion_inventarios.backend.infrastructure.out.persistence.users.entity;
 
-import gestion_inventarios.backend.domain.model.DocumentType;
+import gestion_inventarios.backend.domain.model.user.DocumentType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;

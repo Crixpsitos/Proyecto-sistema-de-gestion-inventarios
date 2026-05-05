@@ -1,9 +1,9 @@
-package gestion_inventarios.backend.infrastructure.in.rest.employee.dto;
+    package gestion_inventarios.backend.infrastructure.in.rest.employee.dto;
 
 import java.time.LocalDateTime;
 
-import gestion_inventarios.backend.domain.model.DocumentType;
-import gestion_inventarios.backend.domain.model.User;
+import gestion_inventarios.backend.domain.model.user.DocumentType;
+import gestion_inventarios.backend.domain.model.user.User;
 
 public record EmployeeResponse(
     Long id,

@@ -9,10 +9,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import gestion_inventarios.backend.domain.exception.DuplicateCategoryException;
 import gestion_inventarios.backend.domain.exception.CategoryDeleteNotAllowedException;
-import gestion_inventarios.backend.domain.exception.UserAlreadyExistsException;
-import gestion_inventarios.backend.domain.exception.UserNotFoundException;
+import gestion_inventarios.backend.domain.exception.DuplicateCategoryException;
+import gestion_inventarios.backend.domain.exception.user.UserAlreadyExistsException;
+import gestion_inventarios.backend.domain.exception.user.UserNotFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

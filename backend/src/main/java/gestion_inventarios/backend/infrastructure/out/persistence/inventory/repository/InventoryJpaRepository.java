@@ -1,8 +1,8 @@
 package gestion_inventarios.backend.infrastructure.out.persistence.inventory.repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

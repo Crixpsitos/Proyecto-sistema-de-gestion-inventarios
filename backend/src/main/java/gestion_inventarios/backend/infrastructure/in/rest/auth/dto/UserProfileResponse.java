@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import gestion_inventarios.backend.domain.model.User;
+import gestion_inventarios.backend.domain.model.user.User;
 
 public record UserProfileResponse(
     Long id,

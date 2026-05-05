@@ -3,7 +3,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import gestion_inventarios.backend.application.ports.out.MovementRepositoryPort;
+import gestion_inventarios.backend.application.ports.out.movement.MovementRepositoryPort;
 import gestion_inventarios.backend.domain.exception.MovementNotFoundException;
 import gestion_inventarios.backend.domain.model.movements.Movement;
 import gestion_inventarios.backend.domain.model.movements.MovementFilters;

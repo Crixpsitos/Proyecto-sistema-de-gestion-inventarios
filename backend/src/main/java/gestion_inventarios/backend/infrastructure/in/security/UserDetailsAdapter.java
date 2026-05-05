@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import gestion_inventarios.backend.domain.model.User;
+import gestion_inventarios.backend.domain.model.user.User;
 
 public class UserDetailsAdapter implements UserDetails {
 

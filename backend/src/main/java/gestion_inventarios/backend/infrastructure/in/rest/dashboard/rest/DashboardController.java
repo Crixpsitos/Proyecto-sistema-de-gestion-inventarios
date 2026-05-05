@@ -20,7 +20,7 @@ import gestion_inventarios.backend.infrastructure.in.rest.dashboard.dto.Dashboar
 import gestion_inventarios.backend.infrastructure.in.rest.dashboard.dto.DashboardResponse;
 import gestion_inventarios.backend.infrastructure.in.rest.dashboard.dto.DashboardStockByLocationResponse;
 import gestion_inventarios.backend.infrastructure.in.rest.dashboard.dto.DashboardTopProductResponse;
-import gestion_inventarios.backend.infrastructure.out.persistence.Category.repository.CategoryJpaRepository;
+import gestion_inventarios.backend.infrastructure.out.persistence.category.repository.CategoryJpaRepository;
 import gestion_inventarios.backend.infrastructure.out.persistence.inventory.repository.InventoryJpaRepository;
 import gestion_inventarios.backend.infrastructure.out.persistence.location.repository.LocationJpaRepository;
 import gestion_inventarios.backend.infrastructure.out.persistence.movements.repository.MovementJpaRepository;

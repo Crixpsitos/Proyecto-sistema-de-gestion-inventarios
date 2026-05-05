@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import gestion_inventarios.backend.application.ports.in.FindUserCase;
-import gestion_inventarios.backend.application.ports.in.MovementUseCase;
-import gestion_inventarios.backend.domain.model.User;
+import gestion_inventarios.backend.application.ports.in.user.FindUserUseCase;
+import gestion_inventarios.backend.application.ports.in.movement.MovementUseCase;
+import gestion_inventarios.backend.domain.model.user.User;
 import gestion_inventarios.backend.domain.model.movements.Movement;
 import gestion_inventarios.backend.domain.model.movements.MovementFilters;
 import gestion_inventarios.backend.domain.model.movements.MovementType;
@@ -31,7 +31,7 @@ import lombok.RequiredArgsConstructor;
 public class MovementController {
 
     private final MovementUseCase movementUseCase;
-    private final FindUserCase findUserCase;
+    private final FindUserUseCase findUserCase;
 
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN','MANAGER','EMPLOYEE')")

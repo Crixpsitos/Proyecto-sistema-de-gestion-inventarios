@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import gestion_inventarios.backend.domain.model.DocumentIdentity;
-import gestion_inventarios.backend.domain.model.Permission;
-import gestion_inventarios.backend.domain.model.Role;
-import gestion_inventarios.backend.domain.model.User;
+import gestion_inventarios.backend.domain.model.user.DocumentIdentity;
+import gestion_inventarios.backend.domain.model.user.Permission;
+import gestion_inventarios.backend.domain.model.user.Role;
+import gestion_inventarios.backend.domain.model.user.User;
 import gestion_inventarios.backend.infrastructure.out.persistence.users.entity.DocumentIdentityEmbeddable;
 import gestion_inventarios.backend.infrastructure.out.persistence.users.entity.RoleEntity;
 import gestion_inventarios.backend.infrastructure.out.persistence.users.entity.UserEntity;

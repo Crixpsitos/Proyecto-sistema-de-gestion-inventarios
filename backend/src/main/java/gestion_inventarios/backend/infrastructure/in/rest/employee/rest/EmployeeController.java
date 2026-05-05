@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import gestion_inventarios.backend.application.ports.in.EmployeeUseCase;
-import gestion_inventarios.backend.domain.model.User;
+import gestion_inventarios.backend.application.ports.in.user.EmployeeUseCase;
+import gestion_inventarios.backend.domain.model.user.User;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;
 import gestion_inventarios.backend.domain.model.shared.PageResult;
 import gestion_inventarios.backend.infrastructure.in.rest.employee.dto.EmployeeCreateRequest;

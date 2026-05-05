@@ -3,11 +3,12 @@ package gestion_inventarios.backend.application.service;
 import java.util.UUID;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import gestion_inventarios.backend.application.ports.in.MovementUseCase;
-import gestion_inventarios.backend.domain.model.User;
+import gestion_inventarios.backend.application.ports.in.movement.MovementUseCase;
+import gestion_inventarios.backend.domain.model.user.User;
 import gestion_inventarios.backend.domain.model.inventory.Inventory;
 import gestion_inventarios.backend.domain.model.locations.Location;
 import gestion_inventarios.backend.domain.model.movements.Movement;
@@ -17,7 +18,6 @@ import gestion_inventarios.backend.domain.model.products.Product;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;
 import gestion_inventarios.backend.domain.model.shared.PageResult;
 import gestion_inventarios.backend.infrastructure.in.rest.movement.dto.MovementCreateRequest;
-import gestion_inventarios.backend.infrastructure.in.security.UserDetailsAdapter;
 import gestion_inventarios.backend.infrastructure.out.persistence.inventory.InventoryPersistenceAdapter;
 import gestion_inventarios.backend.infrastructure.out.persistence.movements.MovementPersistenceAdapter;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +30,7 @@ public class MovementService implements MovementUseCase {
     private final InventoryPersistenceAdapter inventoryAdapter;
     private final ProductService productService;
     private final LocationService locationService;
+    private final UserService userService;
 
     @Transactional
     @Override
@@ -46,12 +47,12 @@ public class MovementService implements MovementUseCase {
                 ? locationService.findById(Long.valueOf(request.destinationId()))
                 : null;
 
-        UserDetailsAdapter userDetails = (UserDetailsAdapter) SecurityContextHolder
+        UserDetails userDetails = (UserDetails) SecurityContextHolder
                 .getContext()
                 .getAuthentication()
                 .getPrincipal();
 
-        User user = userDetails.getDomainUser();
+        User user = userService.findByEmail(userDetails.getUsername());
 
         String userId = user.getId().toString();
         Movement movement = new Movement(movementType, product, source, destination, request.quantity(),

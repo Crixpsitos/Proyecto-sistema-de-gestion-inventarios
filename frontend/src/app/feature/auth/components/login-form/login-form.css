@@ -1,6 +1,11 @@
 .login-card {
   width: 100%;
   max-width: 420px;
+  border-radius: 22px;
+  border: 1px solid rgba(19, 45, 84, 0.12);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.82) 100%);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 18px 38px rgba(19, 45, 84, 0.14);
 }
 
 .full-width {
@@ -9,8 +14,38 @@
 
 .submit-btn {
   margin-top: 8px;
+  min-height: 44px;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 mat-card-header {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+}
+
+mat-card-title {
+  font-size: 1.45rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #0f2a53;
+}
+
+mat-card-subtitle {
+  color: #4e607f;
+}
+
+mat-card-content form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.error-message {
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  color: #8a1515;
+  background: #fde8e8;
+  border: 1px solid #f8c5c5;
 }

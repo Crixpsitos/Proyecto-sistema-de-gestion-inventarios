@@ -6,21 +6,21 @@ import java.util.Set;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import gestion_inventarios.backend.application.ports.in.EmployeeUseCase;
-import gestion_inventarios.backend.application.ports.in.FindUserCase;
-import gestion_inventarios.backend.application.ports.out.UserRepositoryPort;
-import gestion_inventarios.backend.domain.exception.UserAlreadyExistsException;
-import gestion_inventarios.backend.domain.exception.UserNotFoundException;
-import gestion_inventarios.backend.domain.model.DocumentIdentity;
-import gestion_inventarios.backend.domain.model.DocumentType;
-import gestion_inventarios.backend.domain.model.Role;
-import gestion_inventarios.backend.domain.model.User;
-import gestion_inventarios.backend.domain.model.UserAuthDTO;
+import gestion_inventarios.backend.application.ports.in.user.EmployeeUseCase;
+import gestion_inventarios.backend.application.ports.in.user.FindUserUseCase;
+import gestion_inventarios.backend.application.ports.out.user.UserRepositoryPort;
+import gestion_inventarios.backend.domain.exception.user.UserAlreadyExistsException;
+import gestion_inventarios.backend.domain.exception.user.UserNotFoundException;
+import gestion_inventarios.backend.domain.model.user.DocumentIdentity;
+import gestion_inventarios.backend.domain.model.user.DocumentType;
+import gestion_inventarios.backend.domain.model.user.Role;
+import gestion_inventarios.backend.domain.model.user.User;
+import gestion_inventarios.backend.domain.model.user.UserAuthDTO;
 import gestion_inventarios.backend.domain.model.shared.PageRequest;
 import gestion_inventarios.backend.domain.model.shared.PageResult;
 
 @Service
-public class UserService implements FindUserCase, EmployeeUseCase {
+public class UserService implements FindUserUseCase, EmployeeUseCase {
 
     private final UserRepositoryPort userRepositoryPort;
     private final PasswordEncoder passwordEncoder;

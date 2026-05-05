@@ -7,7 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import gestion_inventarios.backend.infrastructure.out.persistence.Category.Entity.CategoryEntity;
+import gestion_inventarios.backend.infrastructure.out.persistence.category.entity.CategoryEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
